@@ -1,38 +1,40 @@
 <template>
   <div id="app">
-  <router-view></router-view>
-  <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route>
-    <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name" :to="item.path" replace >
-    {{item.text}}
-    </van-tabbar-item>
-
-  </van-tabbar>
+    <router-view></router-view>
+    <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route class="footer">
+      <van-tabbar-item
+        :icon="item.icon"
+        v-for="item in menu"
+        :key="item.name"
+        :to="item.path"
+        replace
+        class="footer-item"
+      >{{item.text}}</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 
-
-
 //引入ui组件vant
-import Vant from 'vant';
-import 'vant/lib/index.css';
+import Vant from "vant";
+import "vant/lib/index.css";
 
 Vue.use(Vant);
 
 export default {
-  name: 'app',
-  data(){
+  name: "app",
+  data() {
     return {
       active: 0,
-       menu: [
+      menu: [
         {
           name: "home",
           text: "首页",
           path: "/home",
           icon: "wap-home",
-          color:''
+          color: ""
         },
         {
           name: "chayu",
@@ -53,14 +55,17 @@ export default {
           icon: "user-o"
         }
       ]
-    }
+    };
   },
-  components: {
-
-  }
-}
+  components: {}
+};
 </script>
 
 <style>
-
+.footer {
+  height: 74px;
+}
+.footer-item .van-icon {
+  font-size: 25px;
+}
 </style>
