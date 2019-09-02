@@ -12,26 +12,24 @@
 <script>
 import Vue from "vue";
 
-
-
 //引入ui组件vant
-import Vant from 'vant';
-import 'vant/lib/index.css';
+import Vant from "vant";
+import "vant/lib/index.css";
 
 Vue.use(Vant);
 
 export default {
-  name: 'app',
-  data(){
+  name: "app",
+  data() {
     return {
       active: 0,
-       menu: [
+      menu: [
         {
           name: "home",
           text: "首页",
           path: "/home",
           icon: "wap-home",
-          color:''
+          color: ""
         },
         {
           name: "chayu",
@@ -52,14 +50,11 @@ export default {
           icon: "user-o"
         }
       ]
-    }
+    };
   },
-  components: {
-
-  }
-}
+  components: {}
+};
 </script>
 
 <style>
-
 </style>
