@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-  <router-view></router-view>
-  <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route>
-    <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name" :to="item.path" replace >
-    {{item.text}}
-    </van-tabbar-item>
-
-  </van-tabbar>
+     <router-view></router-view>
+     <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route>
+         <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name" :to="item.path" replace >
+             {{item.text}}
+         </van-tabbar-item>
+     </van-tabbar>
   </div>
 </template>
 
