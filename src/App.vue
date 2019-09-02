@@ -1,30 +1,28 @@
 <template>
   <div id="app">
-  <router-view></router-view>
-  <van-tabbar v-model="active" >
-    <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name">{{item.text}}</van-tabbar-item>
-
-  </van-tabbar>
+    <router-view></router-view>
+    <van-tabbar v-model="active">
+      <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name">{{item.text}}</van-tabbar-item>
+    </van-tabbar>
   </div>
 </template>
 
 <script>
 import Vue from "vue";
 
-
-
 //引入ui组件vant
-import Vant from 'vant';
-import 'vant/lib/index.css';
+import Vant from "vant";
+import "vant/lib/index.css";
+import "./rem.js";
 
 Vue.use(Vant);
 
 export default {
-  name: 'app',
-  data(){
+  name: "app",
+  data() {
     return {
       active: 0,
-       menu: [
+      menu: [
         {
           name: "home",
           text: "首页",
@@ -50,14 +48,11 @@ export default {
           icon: "user-o"
         }
       ]
-    }
+    };
   },
-  components: {
-
-  }
-}
+  components: {}
+};
 </script>
 
 <style>
-
 </style>
