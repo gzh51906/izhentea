@@ -1,8 +1,10 @@
 <template>
   <div id="app">
   <router-view></router-view>
-  <van-tabbar v-model="active" >
-    <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name">{{item.text}}</van-tabbar-item>
+  <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route>
+    <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name" :to="item.path" replace >
+    {{item.text}}
+    </van-tabbar-item>
 
   </van-tabbar>
   </div>
@@ -29,7 +31,8 @@ export default {
           name: "home",
           text: "首页",
           path: "/home",
-          icon: "wap-home"
+          icon: "wap-home",
+          color:''
         },
         {
           name: "chayu",
