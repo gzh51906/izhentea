@@ -38,61 +38,68 @@ export default {
 <style  scoped>
 .van-col {
   background: #fff;
-  padding: 0.266667rem;
-  margin-bottom: 0.266667rem;
+  padding: 0.6rem;
+  margin-bottom: 0.666667rem;
 }
 .title {
   text-align: left;
-  font-size: 0.373333rem;
-  margin: 0.133333rem 0;
+  font-size: 1.066667rem;
+  margin: 0.666667rem 0;
 }
 .show img {
   width: 100%;
   height: 100%;
 }
+.show-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .text-left {
-  float: left;
+  /* float: left;
   width: 1.866667rem;
   height: 0.533333rem;
-  line-height: 0.533333rem;
+  line-height: 0.533333rem; */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .text-left img {
-  width: 0.533333rem;
-  height: 0.533333rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
   float: left;
-  margin-right: 0.133333rem;
+  margin-right: 0.35rem;
 }
 .text-left span {
   color: #666;
-  font-size: 0.32rem;
-  line-height: 0.533333rem;
-  height: 0.533333rem;
+  font-size: 0.84rem;
+  line-height: 0.84rem;
+  /* height: 0.533333rem; */
   float: left;
 }
-.show-bottom {
+/* .show-bottom {
   margin-top: 0.266667rem;
   overflow: hidden;
-}
+} */
 .text-right {
-  float: right;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 .text-right .van-icon {
-  font-size: 0.346667rem;
+  font-size: 1.04rem;
   display: inline-block;
-  height: 0.426667rem;
-  width: 0.426667rem;
+  /* height: 0.84rem; */
+  /* width: 0.84rem; */
   line-height: 0.426667rem;
+  margin-right: 0.266667rem;
 }
 .text-right span {
   display: inline-block;
 
-  height: 0.533333rem;
   color: #999;
-  font-size: 0.32rem;
-  line-height: 0.533333rem;
+  font-size: 0.84rem;
+  line-height: 0.84rem;
 }
 </style>
