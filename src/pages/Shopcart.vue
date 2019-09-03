@@ -1,13 +1,129 @@
 <template>
-    <div class="home">
-    <h1>购物车</h1>
+    <div class="shopcar">
+       <div class="head">
+           <span class="spa">购物车</span>
+           <span class="spb">编辑</span>
+       </div>
+       <ul class="shopbox">
+           <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
+              <li>
+                  <div class="radius">
+                     <van-checkbox v-model="checked" icon-size="15px" checked-color="red" class="radiusbox"></van-checkbox>
+                  </div>
+                  <van-card price="2.00" desc="描述信息" title="商品标题" thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"  class="boxprace"/>
+                  <van-stepper v-model="value" class="fuhao"/>
+              </li>
+              
+           </van-list>
+       </ul>
+       <van-submit-bar :price="3050" button-text="提交订单" @submit="onSubmit" style="bottom:50px">
+           <van-checkbox v-model="checked"  checked-color="red">全选</van-checkbox>
+       </van-submit-bar>
     </div>
 </template>
+
 
 <script>
 export default {
     data(){
-        return{}
+        return{checked: true,
+               onSubmit: "",
+               list: [],
+               loading: false,
+               finished: false,
+               value: 1
+        }
+    },
+
+    methods: {
+    onLoad() {
+      // 异步更新数据
+      setTimeout(() => {
+        for (let i = 0; i < 10; i++) {
+          this.list.push(this.list.length + 1);
+        }
+        // 加载状态结束
+        this.loading = false;
+
+        // 数据全部加载完成
+        if (this.list.length >= 40) {
+          this.finished = true;
+        }
+      }, 500);
     }
+  }
 }
+
+
+
 </script>
+
+
+<style scoped>
+
+.head{
+    width: 100%;
+    height: 44px;
+    background: white;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    text-align: center;
+    line-height: 44px;
+    z-index: 999;
+}
+
+.spa{
+    font-size: 18px;
+}
+
+.spb{
+    font-size: 15px;
+    position: absolute;
+    right: 20px;
+}
+
+.shopbox{
+    width: 100%;
+    height: 594px;
+    background: #f2f2f2;
+    position: relative;
+    top: 44px;
+    overflow: auto;
+}
+
+.shopbox li{
+    position: relative;
+    width: 414px;
+    height: 115px;
+}
+
+.radius{
+    width: 30px;
+    height: 115px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.radiusbox{
+    position: absolute;
+    top: 50px;
+    left: 7px;
+}
+
+.boxprace{
+    width: 380px;
+    position: absolute;
+    left: 30px;
+}
+
+.fuhao{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+
+
+</style>
