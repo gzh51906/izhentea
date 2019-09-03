@@ -191,7 +191,6 @@
 
 <script>
 import bottom from "./bottom.vue";
-import axios from "axios";
 export default {
   components: {
     bottom
@@ -203,6 +202,10 @@ export default {
   },
   mounted() {
     this.container = this.$refs.container;
+  },
+  async created() {
+    let data = await this.$axios.get("http://localhost:1906/goods", {});
+    // console.log(data);
   }
 };
 </script>
