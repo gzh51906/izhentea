@@ -3,6 +3,7 @@
     <van-row type="flex" class="header" justify="center">
       <van-col span="24" class="imgbox" @click="goto('login')">
         <img src="../assets/下载.png" alt />
+        <p class="nothing"></p>
         <span>登录/注册</span>
       </van-col>
       <van-col span="24" class="numltemWraper">
@@ -123,35 +124,43 @@ body {
 }
 .header {
   width: 100%;
-  height: 5.46rem;
+  height: 226.31px;
   background: url(../assets/userbg.8b94fc1.png);
   display: flex;
   flex-direction: column;
   color: #ffffff;
   position: relative;
 }
-.header img {
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
-}
 .imgbox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+  top: 60px;
 }
+.imgbox .nothing {
+  width: 100%;
+  height: 10px;
+  margin: 0;
+}
+.header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .numltemWraper {
   width: 100%;
-  height: 2rem;
+  height: 68px;
   position: absolute;
   padding: 0 11px;
   left: 0;
-  bottom: -18px;
+  bottom: -10px;
 }
 .numltems {
   width: 100%;
-  height: 88px;
+  height: 68px;
   background: rgb(100, 100, 100);
   color: #ffffff;
   text-align: center;
@@ -159,14 +168,17 @@ body {
 .numltems .van-col {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center;
+  align-items: center; */
 }
 .numltems .van-col .num {
-  font-size: 0.426667rem;
+  font-size: 16px;
+  margin: 10px 0 5px;
 }
 .numltems .van-col .text {
-  font-size: 0.346667rem;
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #ffffff;
 }
 .mylist {
   height: 132.45px;
