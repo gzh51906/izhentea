@@ -44,10 +44,12 @@
         <van-icon name="arrow"></van-icon>
       </van-col>
     </van-row>
+    <bot></bot>
   </div>
 </template>
 
 <script>
+import bot from "./bottom.vue";
 export default {
   data() {
     return {
@@ -94,6 +96,9 @@ export default {
         { text: "我的收藏" }
       ]
     };
+  },
+  components: {
+    bot
   }
 };
 </script>
