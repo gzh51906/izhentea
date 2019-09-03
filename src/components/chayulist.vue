@@ -3,7 +3,7 @@
     <van-row>
       <van-col span="22" offset="1">
         <div class="list-left">
-          <p class="list-left-text">茶，让淡雅的日子，氤氲着淡淡鄂香</p>
+          <p class="list-left-text">茶，让淡雅的日子，氤氲着淡淡鄂香淡淡鄂香</p>
           <div class="list-left-bottom">
             <div class="img-left">
               <img src="../img/cyfx.jpg" alt />
@@ -30,7 +30,7 @@ export default {};
 <style  scoped>
 .van-col {
   background: #fff;
-  padding: 0.266667rem;
+  padding: 0.336667rem;
   margin-bottom: 0.266667rem;
   padding-top: 0.533333rem;
   display: flex;
@@ -38,11 +38,11 @@ export default {};
 }
 .list-left {
   flex: 1;
-  margin-right: 0.266667rem;
+  margin-right: 0.8rem;
 }
 .list-right {
-  height: 2rem;
-  width: 2.666667rem;
+  height: 4.65rem;
+  width: 6rem;
 }
 .list-right img {
   width: 100%;
@@ -54,8 +54,8 @@ export default {};
   justify-content: space-between;
 }
 .list-left-text {
-  font-size: 0.4rem;
-  line-height: 0.533333rem;
+  font-size: 1rem;
+  line-height: 1rem;
 }
 .list-left-bottom {
   display: flex;
@@ -67,25 +67,30 @@ export default {};
   align-items: center;
 }
 .img-left img {
-  width: 0.533333rem;
-  height: 0.533333rem;
+  width: 1.3rem;
+  height: 1.3rem;
   border-radius: 50%;
 }
 .img-left span {
   color: #666;
-  font-size: 0.32rem;
+  font-size: 0.84rem;
 }
 .img-right {
   display: flex;
   align-items: center;
 }
 .img-right .van-icon {
-  font-size: 0.346667rem;
+  font-size: 1.04rem;
+  line-height: 0.426667rem;
+  margin-right: 0.266667rem;
+  /* height: 100%;
+  width: 100%; */
+  margin-top: 0.193333rem;
 }
 .img-right span {
-  display: inline-block;
+  /* display: inline-block; */
 
   color: #999;
-  font-size: 0.32rem;
+  font-size: 0.84rem;
 }
 </style>
