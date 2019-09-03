@@ -4,6 +4,7 @@ import Home from "../pages/Home.vue"
 import Mine from "../pages/Mine.vue"
 import Chayu from "../pages/Chayu.vue"
 import Shopcart from "../pages/Shopcart.vue"
+import Login from "../pages/Login.vue"
 import livedetail from "../pages/livedetail.vue"
 
 
@@ -24,19 +25,19 @@ let router = new VueRouter({
         component: Home
     },
     {
-        // 当浏览器路径为/home时，渲染Home组件内容
+        // 当浏览器路径为/home时，渲染Mine组件内容
         name: 'mine',
         path: '/mine',
         component: Mine
     },
     {
-        // 当浏览器路径为/home时，渲染Home组件内容
+        // 当浏览器路径为/home时，渲染Chayu组件内容
         name: 'chayu',
         path: '/chayu',
         component: Chayu
     },
     {
-        // 当浏览器路径为/home时，渲染Home组件内容
+        // 当浏览器路径为/home时，渲染Shopcart组件内容
         name: 'shopcart',
         path: '/shopcart',
         component: Shopcart
@@ -50,6 +51,11 @@ let router = new VueRouter({
         // 当浏览器路径为/，重定向到/home
         path: '/',
         redirect: { name: 'home' }
+    }, {
+        // 当浏览器路径为/home时，渲染Shopcart组件内容
+        name: 'login',
+        path: '/login',
+        component: Login
     }]
 })
 

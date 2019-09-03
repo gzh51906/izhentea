@@ -1,12 +1,13 @@
 <template>
   <div class="mine">
     <van-row type="flex" class="header" justify="center">
-      <van-col span="24" class="imgbox">
+      <van-col span="24" class="imgbox" @click="goto('login')">
         <img src="../assets/下载.png" alt />
+        <p class="nothing"></p>
         <span>登录/注册</span>
       </van-col>
       <van-col span="24" class="numltemWraper">
-        <van-row type="flex" justify="center" class="numltem">
+        <van-row type="flex" justify="center" class="numltems">
           <van-col span="6" v-for="item in menu" :key="item.name">
             <p class="num">{{item.num}}</p>
             <p class="text">{{item.name}}</p>
@@ -44,10 +45,12 @@
         <van-icon name="arrow"></van-icon>
       </van-col>
     </van-row>
+    <bot></bot>
   </div>
 </template>
 
 <script>
+import bot from "./bottom.vue";
 export default {
   data() {
     return {
@@ -94,6 +97,14 @@ export default {
         { text: "我的收藏" }
       ]
     };
+  },
+  methods: {
+    goto(path) {
+      this.$router.push({ path });
+    }
+  },
+  components: {
+    bot
   }
 };
 </script>
@@ -120,31 +131,54 @@ body {
   color: #ffffff;
   position: relative;
 }
-.header img {
-  width: 50.78px;
-  height: 50.78px;
-  border-radius: 50%;
-}
 .imgbox {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  position: absolute;
+  left: 0;
+  top: 60px;
 }
+.imgbox .nothing {
+  width: 100%;
+  height: 10px;
+  margin: 0;
+}
+.header img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
 .numltemWraper {
   width: 100%;
-  height: 88px;
+  height: 68px;
   position: absolute;
   padding: 0 11px;
   left: 0;
-  bottom: -18px;
+  bottom: -10px;
 }
-.numltem {
+.numltems {
   width: 100%;
-  height: 88px;
+  height: 68px;
   background: rgb(100, 100, 100);
   color: #ffffff;
   text-align: center;
+}
+.numltems .van-col {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+}
+.numltems .van-col .num {
+  font-size: 16px;
+  margin: 10px 0 5px;
+}
+.numltems .van-col .text {
+  margin: 0 0 5px;
+  font-size: 13px;
+  color: #ffffff;
 }
 .mylist {
   height: 132.45px;
@@ -152,6 +186,7 @@ body {
   margin: 25px 12px 10px;
   padding: 0 12px 0 14px;
   background: #ffffff;
+  font-size: 0.4rem;
 }
 
 .mylist .mylist-mine {
@@ -167,10 +202,10 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 0.8rem;
 }
 .sign-item span {
-  font-size: 16px;
+  font-size: 0.426667rem;
 }
 ul {
   height: 194.25px;
@@ -178,6 +213,7 @@ ul {
   flex-direction: column;
   margin: 0 12px 10px;
   background: #ffffff;
+  font-size: 0.4rem;
 }
 .list-item {
   /* display: flex;
@@ -197,5 +233,6 @@ ul {
   height: 100%;
   align-items: center;
   padding: 0 11px 0 16px;
+  font-size: 0.4rem;
 }
 </style>
