@@ -5,9 +5,6 @@ import App from './App.vue'
 //引入router组件
 import router from './router';
 
-
-
-
 Vue.config.productionTip = false
 
 
