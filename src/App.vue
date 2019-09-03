@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+<<<<<<< HEAD
   <router-view></router-view>
   <van-tabbar v-model="active" active-color="#000" inactive-color="#ccc" route>
     <van-tabbar-item :icon="item.icon" v-for="item in menu" :key="item.name" :to="item.path" replace >
@@ -7,6 +8,9 @@
     </van-tabbar-item>
 
   </van-tabbar>
+=======
+    <router-view></router-view>
+>>>>>>> dev
   </div>
 </template>
 
@@ -17,42 +21,13 @@ import Vue from "vue";
 import Vant from "vant";
 import "vant/lib/index.css";
 
+//把底部按钮单独放在另一个文件里
+
 Vue.use(Vant);
 
 export default {
   name: "app",
-  data() {
-    return {
-      active: 0,
-      menu: [
-        {
-          name: "home",
-          text: "首页",
-          path: "/home",
-          icon: "wap-home",
-          color: ""
-        },
-        {
-          name: "chayu",
-          text: "茶语",
-          path: "/chayu",
-          icon: "gift-card-o"
-        },
-        {
-          name: "shopcart",
-          text: "购物车",
-          path: "/shopcart",
-          icon: "shopping-cart-o"
-        },
-        {
-          name: "mine",
-          text: "我的",
-          path: "/mine",
-          icon: "user-o"
-        }
-      ]
-    };
-  },
+
   components: {}
 };
 </script>
