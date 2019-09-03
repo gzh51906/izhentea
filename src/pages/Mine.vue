@@ -97,15 +97,13 @@ export default {
       ]
     };
   },
-<<<<<<< HEAD
   methods: {
     goto(path) {
       this.$router.push({ path });
     }
-=======
+  },
   components: {
     bot
->>>>>>> dev
   }
 };
 </script>
