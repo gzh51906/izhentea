@@ -205,7 +205,7 @@ export default {
   },
   async created() {
     let data = await this.$axios.get("http://localhost:1906/goods", {});
-    // console.log(data);
+    console.log(data);
   }
 };
 </script>
