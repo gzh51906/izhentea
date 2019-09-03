@@ -7,16 +7,14 @@ import store from './store'
 import router from './router';
 import axios from 'axios';
 
+
+
 Vue.config.productionTip = false
 
 
-//引入Grid 宫格组件
-import { Grid, GridItem } from 'vant';
-Vue.use(Grid).use(GridItem);
+// 把axios写入Vue原型，方便子组件调用
+Vue.prototype.$axios = axios;
 
-//引入Tab 标签页组件
-import { Tab, Tabs } from 'vant';
-Vue.use(Tab).use(Tabs);
 
 new Vue({
   // 4.把router实例注入到vue实例中

@@ -115,13 +115,10 @@
 export default {
   data() {
     return {};
-  }
-};
-</script>
-
   },
-  methods: {
-    onLoad() {}
+  async created() {
+    let data = await this.$axios.get("http://localhost:1906/goods", {});
+    // console.log(data);
   }
 };
 </script>

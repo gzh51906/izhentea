@@ -15,7 +15,7 @@
         </van-row>
       </van-col>
     </van-row>
-    <van-row class="mylist">
+    <van-row class="mylist" type="flex" justify="space-between">
       <van-row type="flex" justify="space-between" class="mylist-mine">
         <span>我的订单</span>
         <van-icon name="arrow"></van-icon>
@@ -176,17 +176,19 @@ body {
   margin: 10px 0 5px;
 }
 .numltems .van-col .text {
+  width: 100%;
   margin: 0 0 5px;
   font-size: 13px;
   color: #ffffff;
 }
 .mylist {
   height: 132.45px;
-  width: 390px;
-  margin: 25px 12px 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 16px 12px 10px;
   padding: 0 12px 0 14px;
   background: #ffffff;
-  font-size: 0.4rem;
+  font-size: 16px;
 }
 
 .mylist .mylist-mine {
@@ -204,8 +206,11 @@ body {
   align-items: center;
   font-size: 0.8rem;
 }
+.sign-item .van-icon {
+  font-size: 23px;
+}
 .sign-item span {
-  font-size: 0.426667rem;
+  font-size: 15px;
 }
 ul {
   height: 194.25px;
@@ -213,7 +218,7 @@ ul {
   flex-direction: column;
   margin: 0 12px 10px;
   background: #ffffff;
-  font-size: 0.4rem;
+  font-size: 16px;
 }
 .list-item {
   /* display: flex;
@@ -233,6 +238,6 @@ ul {
   height: 100%;
   align-items: center;
   padding: 0 11px 0 16px;
-  font-size: 0.4rem;
+  font-size: 16px;
 }
 </style>
