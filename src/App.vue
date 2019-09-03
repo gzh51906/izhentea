@@ -23,7 +23,6 @@ export default {
 </script>
 
 <style>
-<<<<<<< HEAD
 html,
 body {
   height: 100%;
@@ -37,6 +36,4 @@ body {
 .footer-item .van-icon {
   font-size: 25px;
 }
-=======
->>>>>>> dev
 </style>
