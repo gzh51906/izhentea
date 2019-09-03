@@ -44,10 +44,12 @@
         <van-icon name="arrow"></van-icon>
       </van-col>
     </van-row>
+    <bot></bot>
   </div>
 </template>
 
 <script>
+import bot from "./bottom.vue";
 export default {
   data() {
     return {
@@ -95,10 +97,15 @@ export default {
       ]
     };
   },
+<<<<<<< HEAD
   methods: {
     goto(path) {
       this.$router.push({ path });
     }
+=======
+  components: {
+    bot
+>>>>>>> dev
   }
 };
 </script>

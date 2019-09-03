@@ -4,17 +4,20 @@
     <div class="top">茶语</div>
     <!-- 选项切换组件 -->
     <chayutop></chayutop>
+    <bot></bot>
   </div>
 </template>
 
 <script>
 import chayutop from "../components/chayutop.vue";
+import bot from "./bottom.vue";
 export default {
   data() {
     return {};
   },
   components: {
-    chayutop
+    chayutop,
+    bot
   }
 };
 </script>
