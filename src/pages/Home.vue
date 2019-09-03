@@ -108,20 +108,22 @@
     <div class="hot-wrapper">
       <h3>热销榜</h3>
     </div>
+    <bottom></bottom>
   </div>
 </template>
 
 <script>
+import bottom from "./bottom.vue";
 export default {
+  components: {
+    bottom
+  },
   data() {
     return {};
-  }
-};
-</script>
-
   },
-  methods: {
-    onLoad() {}
+  async created() {
+    let data = await this.$axios.get("http://localhost:1906/goods", {});
+    // console.log(data);
   }
 };
 </script>
