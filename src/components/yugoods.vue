@@ -5,9 +5,11 @@
     </p>
     <div class="yu-list">
       <van-card
-        price="418.0"
-        title="同德普洱 论剑系列  甲午普洱生茶"
-        thumb="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/4d328c65-c333-4e28-bcd4-2a18acc31281.jpg"
+        v-for="item in list"
+        :key="item._id"
+        :price="item.price"
+        :title="item.content"
+        :thumb="item.src"
       >
         <div slot="tags" class="anniu">
           <van-button size="mini">查看</van-button>
@@ -20,15 +22,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return { list: [] };
   },
   async created() {
     let { data } = await this.$axios.get(
       "http://localhost:1906/yulist/goodslist",
       {}
     );
-    console.log(data);
-    // this.list = data.data;
+    let a = parseInt(Math.random() * 100);
+    let b = parseInt(Math.random() * 4 + 3);
+    this.list = data.data.slice(a, a + b);
   }
 };
 </script>
