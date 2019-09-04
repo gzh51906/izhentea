@@ -1,5 +1,9 @@
 <template>
+<<<<<<< HEAD
 <!-- ff -->
+=======
+  <!-- 大哥 -->
+>>>>>>> b008d8e7995649668049afe6b6696cd38b57cc8e
   <div class="yu-talk">
     <div class="ping-top">
       <span>评论 (3)</span>

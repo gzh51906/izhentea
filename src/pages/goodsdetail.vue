@@ -35,6 +35,13 @@
     <goodstalk></goodstalk>
     <!-- 底部购买按钮 -->
     <goodsbuy></goodsbuy>
+    <!-- 商品详情 -->
+    <div class="goods-info"></div>
+    <div class="src-box">
+      <div class="goods-src" v-for="item in src" :key="item">
+        <img :src="item" alt />
+      </div>
+    </div>
   </div>
 </template>
 
@@ -47,7 +54,23 @@ import goodsbuy from "../components/goodsbuy.vue";
 export default {
   data() {
     return {
-      current: 0
+      current: 0,
+      src: [
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/725e4bad-ef8e-4605-92db-2c0799a1ce56.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/993c147b-9653-4d70-8636-1b731fd6999f.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/8c95958e-f12a-4c7b-98df-f12a1fedaa28.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/79240ada-8ec3-4a20-a25a-730660e50891.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/a9544f05-adc7-413f-84cb-1b7888417f0f.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/720a81b9-0279-465d-89c3-5d961bf45d15.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/6cdb8a7e-f323-4470-b688-d50111dc62f1.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/aaad7d0e-40d9-4113-a780-331d2dd26725.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/4290f639-2a7f-4763-aef0-f459fdc3f167.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/48c109a1-bd84-40df-afc8-98dffb3d824c.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/8e623736-daf0-4ed0-970a-b6219617e8d1.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/97d3dcf9-7d15-40f9-b38c-3c2d3745b058.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/9e142731-a173-415b-89d2-9eceece0e478.jpg",
+        "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/2dff0e06-a6af-4ec3-affe-132b2dd459e4.jpg"
+      ]
     };
   },
   methods: {
@@ -133,5 +156,21 @@ export default {
 .price-num {
   font-size: 0.76rem;
   color: #333;
+}
+.goods-info {
+  width: 8.96rem;
+  height: 1.7rem;
+  margin: 0.7rem auto;
+  background-size: cover;
+  background-image: url(../img/xiangq.png);
+}
+.goods-src {
+  border: 0;
+  margin: 0;
+  font-size: 0;
+}
+.goods-src img {
+  width: 100%;
+  height: 100%;
 }
 </style>

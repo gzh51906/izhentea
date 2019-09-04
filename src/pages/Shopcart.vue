@@ -1,9 +1,8 @@
 <template>
     <div class="shopcar">
        <div class="head">
-           <span class="spa">购物车</span>
-           <span class="spb">编辑</span>
-       </div>
+            <van-nav-bar title="购物车" left-text=""/>
+        </div>
        <ul class="shopbox">
            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
               <li>
@@ -67,7 +66,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style>
 
 .head{
     width: 100%;

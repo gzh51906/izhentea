@@ -2,30 +2,34 @@
   <div class="other-talk">
     <div class="other-top">
       <div class="user">
-        <img src="../img/touxiang.jpg" alt />
+        <img :src="item.src" alt />
         <div class="name">
-          <span class="name-top">南方嘉木</span>
-          <span class="name-time">一周前</span>
+          <span class="name-top">{{item.username}}</span>
+          <span class="name-time">{{item.time}}</span>
         </div>
       </div>
       <div class="look-right">
         <van-icon name="good-job-o" />
-        <span>4</span>
+        <span>{{item.num}}</span>
       </div>
     </div>
-    <div class="other-word">论剑口感很不错，可以作为日常口粮茶来喝。平时不太喜欢喝生普，感觉比较烈。但是这款比较柔，不错不错。</div>
+    <div class="other-word">{{item.text}}</div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["item"]
+};
 </script>
 
 <style scoped>
 .other-talk {
-  padding: 0 0.966667rem;
+  padding: 0.666667rem 0.966667rem;
   display: flex;
   flex-direction: column;
-  margin-bottom: 0.666667rem;
+  /* padding-bottom: 0.666667rem; */
+  background: #fff;
+  border-bottom: 1px solid #999;
 }
 .other-talk .other-top {
   display: flex;
