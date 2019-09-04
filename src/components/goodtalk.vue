@@ -1,5 +1,4 @@
 <template>
-  <!-- 评论 -->
   <div class="goodstalk">
     <div class="talk-top">
       <div class="left">
