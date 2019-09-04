@@ -6,9 +6,13 @@ import Chayu from "../pages/Chayu.vue"
 import Shopcart from "../pages/Shopcart.vue"
 import Login from "../pages/Login.vue"
 import livedetail from "../pages/livedetail.vue"
+
+import goodsdetail from "../pages/goodsdetail.vue"
+
 import pay from "../pages/pay.vue"
 import addresslist from "../pages/addresslist.vue"
 import address from "../pages/address.vue"
+
 
 
 // 路由
@@ -49,6 +53,11 @@ let router = new VueRouter({
         name: 'livedetail',
         path: '/livedetail',
         component: livedetail
+    }, {
+        // 当浏览器路径为/goodsdetail时，渲染goodsdetail组件内容
+        name: 'goodsdetail',
+        path: '/goodsdetail',
+        component: goodsdetail
     },
     {
         // 当浏览器路径为/，重定向到/home

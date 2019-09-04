@@ -67,7 +67,7 @@ export default {
   display: flex;
   justify-content: flex-start;
   background: #fff;
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
@@ -167,7 +167,7 @@ export default {
   font-size: 0.7rem;
 }
 .but {
-  margin: 0.6rem 0;
+  padding: 0.6rem 0;
   text-align: center;
   color: #999;
   font-size: 0.74rem;
