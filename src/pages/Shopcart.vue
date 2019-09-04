@@ -16,42 +16,50 @@
               
            </van-list>
        </ul>
-       <van-submit-bar :price="3050" button-text="提交订单" @submit="onSubmit" style="bottom:50px">
+       <van-submit-bar :price="3050" button-text="结算" @submit="onSubmit('pay')" style="bottom:74px">
            <van-checkbox v-model="checked"  checked-color="red">全选</van-checkbox>
        </van-submit-bar>
+       <bot></bot>
     </div>
 </template>
 
 
 <script>
+import bot from "./bottom.vue";
 export default {
     data(){
         return{checked: true,
-               onSubmit: "",
                list: [],
                loading: false,
                finished: false,
                value: 1
         }
+       
+    },
+    components: {
+            bot,
     },
 
     methods: {
-    onLoad() {
-      // 异步更新数据
-      setTimeout(() => {
-        for (let i = 0; i < 10; i++) {
-          this.list.push(this.list.length + 1);
-        }
-        // 加载状态结束
-        this.loading = false;
+        onLoad(){
+            setTimeout(()=>{
+                for(let i = 0; i < 10; i++){
+                    this.list.push(this.list.length + 1);
+                }
 
-        // 数据全部加载完成
-        if (this.list.length >= 40) {
-          this.finished = true;
+                this.loading = false;
+
+                if(this.list.length >= 40){
+                    this.finished = true;
+                }
+            }, 500)
+        },
+
+        onSubmit(path){
+            this.$router.push({path})
         }
-      }, 500);
     }
-  }
+
 }
 
 
@@ -86,7 +94,7 @@ export default {
 
 .shopbox{
     width: 100%;
-    height: 594px;
+    height: 574px;
     background: #f2f2f2;
     position: relative;
     top: 44px;
