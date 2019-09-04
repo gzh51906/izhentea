@@ -5,28 +5,41 @@
         <span class="text">茶评</span>
         <span class="num">(10)</span>
       </div>
-      <p class="right">查看全部</p>
+      <p class="right" @click="goto">查看全部</p>
     </div>
-    <div class="info">
-      <div class="info-right">
-        <div class="tu">
-          <img src="../img/li.jpg" alt />
+    <div class="msg-info">
+      <div class="info">
+        <div class="info-right">
+          <div class="tu">
+            <img src="../img/li.jpg" alt />
+          </div>
+          <div class="info-text">
+            <span class="name">再不努力我们就老了</span>
+            <span class="time">2019-06-05</span>
+          </div>
         </div>
-        <div class="info-text">
-          <span class="name">再不努力我们就老了</span>
-          <span class="time">2019-06-05</span>
+        <div class="look-right">
+          <van-icon name="good-job-o" />
+          <span>4</span>
         </div>
       </div>
-      <div class="look-right">
-        <van-icon name="good-job-o" />
-        <span>4</span>
-      </div>
+      <p class="info-word">茶叶不错，泡出来的茶水晶莹通透，颜色很正，闻起来味道纯正，不错</p>
     </div>
-    <p class="info-word">茶叶不错，泡出来的茶水晶莹通透，颜色很正，闻起来味道纯正，不错</p>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  methods: {
+    goto() {
+      let a = Math.random() * 73;
+      this.$router.push({ name: "chaping", query: { a } });
+    }
+  },
+  async created() {}
+};
 </script>
 
 <style scoped>
