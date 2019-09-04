@@ -25,6 +25,16 @@ Router.get('/goodslist', async (req, res) => {
     res.send(formatData({ data }))
 })
 
+//获取评论区信息
+Router.get('/goodstalk', async (req, res) => {
+    // console.log("----------------------")
+    let { skip, limit, sort } = req.query;
+    let data = await find('goodstalk', {}, { skip, limit, sort });
+    // console.log(data);
+
+    res.send(formatData({ data }))
+})
+
 //根据id获取信息
 Router.get('/:id', async (req, res) => {
     // console.log("--------")
