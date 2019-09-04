@@ -1,8 +1,7 @@
 <template>
     <div class="address">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>添加地址</span>
+            <van-nav-bar title="添加地址" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
         <div class="add">
             <van-address-edit
@@ -10,11 +9,8 @@
             show-postal
             show-delete
             show-set-default
-            show-search-result
-            :search-result="searchResult"
             @save="onSave"
-            @delete="onDelete"
-            @change-detail="onChangeDetail"/>
+            @delete="onDelete"/>
         </div>
     </div>
 </template>
@@ -23,30 +19,33 @@
 
 import areaList from "../assets/area"
 export default {
+  name: "addressEdit",
+  components: {},
+
   data() {
     return {
-      areaList,
-      searchResult: []
+      areaList
     }
   },
 
   methods: {
-    onSave() {
-      this.$router.push("/addresslist")
+    onSave(e) {
+      let data = {};
+      data.name = e.name;
+      data.tel = e.tel;
+      data.address = e.province + e.city + e.county + e.addressDetail;
+      data.areaCode = e.areaCode;
+      data.isDefault = e.isDefault;
+      data.postalCode = e.postalCode;
+      console.log(data)
     },
-    onDelete() {
-      Toast('delete');
-    },
-    onChangeDetail(val) {
-      if (val) {
-        this.searchResult = [{
-          name: '黄龙万科中心',
-          address: '杭州市西湖区'
-        }];
-      } else {
-        this.searchResult = [];
-      }
+
+    onDelete() {},
+
+    onClickLeft(){
+      this.$router.go(-1);
     }
+    
   }
 }
 
