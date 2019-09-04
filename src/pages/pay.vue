@@ -5,7 +5,7 @@
         </div>
         <div class="shoplist">
             <div class="addressinp"> 
-                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd('addresslist')"/>
+                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd"/>
                 <div class="paybox">
                     <p>支付方式</p>
                     <van-cell title="微信" icon="wechat">
@@ -32,11 +32,11 @@ export default {
 
     methods: {
         goadd(path){
-            this.$router.push({path})
+            this.$router.push({path:'addresslist'})
         },
 
         onClickLeft(){
-            this.$router.go(-1);
+            this.$router.push({path:"/Shopcart"});
         }
     }
 }

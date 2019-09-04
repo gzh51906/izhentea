@@ -6,8 +6,9 @@
         <div class="add">
             <van-address-edit
             :area-list="areaList"
+            :show-delete="isShowDeleteBtn"
+            :address-info="addressInfo"
             show-postal
-            show-delete
             show-set-default
             @save="onSave"
             @delete="onDelete"/>
@@ -17,14 +18,27 @@
 
 <script>
 
-import areaList from "../assets/area"
+import areaList from "../assets/area";
+import { mapMutations } from "vuex";
+
 export default {
-  name: "addressEdit",
+  name: "Address",
   components: {},
 
   data() {
     return {
-      areaList
+      queryIdx: "",
+      areaList,
+      isShowDeleteBtn: false,
+      addressInfo:{},
+    }
+  },
+
+  created() {
+    if (this.$route.query.idx >= 0) {
+      this.queryIdx = this.$route.query.idx;
+      this.addressInfo = this.$store.state.address[this.$route.query.idx];
+      this.isShowDeleteBtn = true;
     }
   },
 
@@ -33,14 +47,29 @@ export default {
       let data = {};
       data.name = e.name;
       data.tel = e.tel;
-      data.address = e.province + e.city + e.county + e.addressDetail;
+      data.address = e.province + e.city + e.county + e.addressDetail + "";
       data.areaCode = e.areaCode;
       data.isDefault = e.isDefault;
       data.postalCode = e.postalCode;
-      console.log(data)
+      data.addressDetail = e.addressDetail;
+
+      if (this.queryIdx !== "") {
+        this.editAddress({ data: data, idx: this.queryIdx });
+      } else {
+        this.saveAddress(data);
+      }
+      
+      this.$router.push({path:"/addresslist"})
     },
 
-    onDelete() {},
+    onDelete(e){
+      this.removeAddress(this.idx);
+      this.$router.push({
+        path: "/addresslist"
+      });
+    },
+
+    ...mapMutations(["saveAddress", "removeAddress", "editAddress"]),
 
     onClickLeft(){
       this.$router.go(-1);
@@ -51,7 +80,7 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
 
 .add{
     position: relative;
