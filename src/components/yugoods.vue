@@ -21,6 +21,14 @@
 export default {
   data() {
     return {};
+  },
+  async created() {
+    let { data } = await this.$axios.get(
+      "http://localhost:1906/yulist/goodslist",
+      {}
+    );
+    console.log(data);
+    // this.list = data.data;
   }
 };
 </script>

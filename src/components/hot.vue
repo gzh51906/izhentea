@@ -19,18 +19,18 @@
         </div>
       </van-col>
     </van-row>
-    <chayulist></chayulist>
+    <!-- <chayulist></chayulist> -->
   </div>
 </template>
 
 <script>
-import chayulist from "./chayulist.vue";
+// import chayulist from "./chayulist.vue";
 export default {
   data() {
     return {};
   },
   components: {
-    chayulist
+    // chayulist
   }
 };
 </script>

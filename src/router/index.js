@@ -51,7 +51,7 @@ let router = new VueRouter({
     }, {
         // 当浏览器路径为/livedetetail时，渲染Home组件内容
         name: 'livedetail',
-        path: '/livedetail',
+        path: '/livedetail/:id',
         component: livedetail
     }, {
         // 当浏览器路径为/goodsdetail时，渲染goodsdetail组件内容

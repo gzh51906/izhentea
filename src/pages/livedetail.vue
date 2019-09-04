@@ -2,18 +2,18 @@
   <div class="detail">
     <div class="top">
       <span>
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" @click="back" />
       </span>
     </div>
     <div class="main">
-      <p class="title">视频丨易武为后，煮茶论剑</p>
+      <p class="title">{{info.title}}</p>
       <div class="touxiang">
-        <img src="../img/touxiang.jpg" alt />
-        <span>茶臻选</span>
+        <img :src="info.touxiang" alt />
+        <span>{{info.name}}</span>
       </div>
       <div class="word">
         <p class="yu-text">
-          <img src="../img/dat.jpg" alt />
+          <img :src="info.bgsrc" alt />
         </p>
         <p class="yu-text">说到普洱，广为流传这么一句话“班章为王，易武为后”。班章茶气刚烈，厚重醇香，霸气十足，王者风范。易武口感细腻，汤中带甜，如王后般温柔典雅。</p>
         <p
@@ -24,7 +24,7 @@
       <div class="look">
         <div class="look-left">
           <van-icon name="eye-o" />
-          <span>422人看过</span>
+          <span>{{info.num}}</span>
         </div>
         <div class="look-right">
           <van-icon name="good-job-o" />
@@ -48,11 +48,26 @@ import talk from "../components/yutalk.vue";
 import yugoods from "../components/yugoods.vue";
 export default {
   data() {
-    return {};
+    return { info: {} };
+  },
+  methods: {
+    back() {
+      this.$router.push({ name: "chayu" });
+    }
   },
   components: {
     talk,
     yugoods
+  },
+  async created() {
+    let { data } = await this.$axios.get(
+      `http://localhost:1906/yulist/` + this.$route.params.id,
+      {
+        params: { id: this.$route.params }
+      }
+    );
+
+    this.info = data.data[0];
   }
 };
 </script>
@@ -91,7 +106,7 @@ export default {
   font-size: 1.5rem;
   font-weight: 700;
   color: #333;
-  line-height: 0.533333rem;
+  line-height: 1.833333rem;
 }
 .main .touxiang {
   display: flex;
