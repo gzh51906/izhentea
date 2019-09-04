@@ -3,18 +3,11 @@
     <!-- 轮播 -->
     <van-swipe @change="onChange" class="lunbo">
       <van-swipe-item>
-        <img src="../img/lun.jpg" alt />
+        <img :src="data.src" alt />
       </van-swipe-item>
-      <van-swipe-item>
-        <img src="../img/lun2.jpg" alt />
-      </van-swipe-item>
-      <van-swipe-item>3</van-swipe-item>
-      <van-swipe-item>4</van-swipe-item>
-
-      <div class="custom-indicator" slot="indicator">{{ current + 1 }} / 4</div>
     </van-swipe>
     <!-- 价格 -->
-    <div class="datail-price">¥ 418</div>
+    <div class="datail-price">¥{{data.price}}</div>
     <!-- 信息 -->
     <div class="datail-info">
       <p class="datail-title">同德普洱 论剑系列 甲午普洱生茶</p>
@@ -54,6 +47,7 @@ import goodsbuy from "../components/goodsbuy.vue";
 export default {
   data() {
     return {
+      list: {},
       current: 0,
       src: [
         "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/725e4bad-ef8e-4605-92db-2c0799a1ce56.jpg",
@@ -72,6 +66,25 @@ export default {
         "https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/2dff0e06-a6af-4ec3-affe-132b2dd459e4.jpg"
       ]
     };
+  },
+  async created() {
+    let { id } = this.$route.params;
+    let { data: { data: data } } = await this.$axios.get(
+      "http://localhost:1906/goods/" + this.$route.params.id,
+      {
+        params: {}
+      }
+    );
+    console.log("data", data);
+    this.data = {
+      src: data.src,
+      price: data.price,
+      content: data.content
+    };
+    console.log("=========", this.data);
+  },
+  mounted() {
+    console.log(this.$route);
   },
   methods: {
     onChange(index) {
