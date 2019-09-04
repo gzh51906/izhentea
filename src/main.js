@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import App from './App.vue'
+import store from './store'
 
 //引入router组件
 import router from './router';
@@ -13,6 +14,7 @@ Vue.prototype.$axios = axios;
 
 
 new Vue({
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')

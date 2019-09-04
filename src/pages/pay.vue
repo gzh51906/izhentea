@@ -1,8 +1,7 @@
 <template>
     <div class="jiesuan">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>确认信息</span>
+            <van-nav-bar title="确认信息" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
         <div class="shoplist">
             <div class="addressinp"> 
@@ -34,6 +33,10 @@ export default {
     methods: {
         goadd(path){
             this.$router.push({path})
+        },
+
+        onClickLeft(){
+            this.$router.go(-1);
         }
     }
 }

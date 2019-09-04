@@ -1,15 +1,12 @@
 <template>
     <div class="addresslist">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>我的地址</span>
+            <van-nav-bar title="我的地址" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
-        <div>
+        <div class="addressnav">
             <van-address-list
              v-model="chosenAddressId"
              :list="list"
-             :disabled-list="disabledList"
-             disabled-text="以下地址超出配送范围"
              @add="onAdd('address')"
              @edit="onEdit"/>
         </div>
@@ -19,6 +16,8 @@
 <script>
 
 export default {
+  name: "addresslist",
+  components: {},
   data() {
     return {
       chosenAddressId: '1',
@@ -36,26 +35,31 @@ export default {
           address: '浙江省杭州市拱墅区莫干山路 50 号'
         }
       ],
-      disabledList: [
-        {
-          id: '3',
-          name: '王五',
-          tel: '1320000000',
-          address: '浙江省杭州市滨江区江南大道 15 号'
-        }
-      ]
     }
   },
 
   methods: {
-    onAdd(path) {
-      this.$router.push({path})
+    onAdd(name) {
+      this.$router.push({name})
     },
 
     onEdit(item, index) {
       Toast('编辑地址:' + index);
+    },
+
+    onClickLeft(){
+      this.$router.go(-1);
     }
   }
 }
 
 </script>
+
+<style scoped>
+
+.addressnav{
+  position: relative;
+  top: 60px;
+}
+
+</style>
