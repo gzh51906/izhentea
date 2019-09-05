@@ -39,6 +39,10 @@ export default {
             bot,
     },
 
+    computed: {
+        
+    },
+
     methods: {
         onLoad(){
             setTimeout(()=>{
