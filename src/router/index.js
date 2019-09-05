@@ -12,6 +12,8 @@ import goodsdetail from "../pages/goodsdetail.vue"
 import pay from "../pages/pay.vue"
 import addresslist from "../pages/addresslist.vue"
 import address from "../pages/address.vue"
+import chaping from "../pages/chaping.vue"
+import list from "../pages/list.vue"
 
 
 
@@ -83,6 +85,16 @@ let router = new VueRouter({
         name: 'address',
         path: '/address',
         component: address
+    }, {
+        // 当浏览器路径为/address时，渲染address组件内容
+        name: 'chaping',
+        path: '/chaping',
+        component: chaping
+    }, {
+        // 当浏览器路径为/list时，渲染list组件内容
+        name: 'list',
+        path: '/list',
+        component: list
     }]
 })
 
