@@ -8,8 +8,8 @@ const { formatData } = require('../utils');
 
 // 获取茶语文章：get /user
 Router.get('/check', async (req, res) => {
-    let { skip, limit, sort } = req.query;
-    let data = await find('yulist', {}, { skip, limit, sort });
+    let { skip, limit, sort, asc } = req.query;
+    let data = await find('yulist', {}, { skip, limit, sort, asc });
     // console.log(data);
 
     res.send(formatData({ data }))
@@ -18,8 +18,8 @@ Router.get('/check', async (req, res) => {
 //获取茶语商品列表
 Router.get('/goodslist', async (req, res) => {
     // console.log("----------------------")
-    let { skip, limit, sort } = req.query;
-    let data = await find('yugoodslist', {}, { skip, limit, sort });
+    let { skip, limit, sort, asc } = req.query;
+    let data = await find('yugoodslist', {}, { skip, limit, sort, asc });
     // console.log(data);
 
     res.send(formatData({ data }))
@@ -27,9 +27,10 @@ Router.get('/goodslist', async (req, res) => {
 
 //获取评论区信息
 Router.get('/goodstalk', async (req, res) => {
-    // console.log("----------------------")
-    let { skip, limit, sort } = req.query;
-    let data = await find('goodstalk', {}, { skip, limit, sort });
+    // console.log("----------------------", req.query)
+    let { skip, limit, sort, asc } = req.query;
+
+    let data = await find('goodstalk', {}, { skip, limit, sort, asc });
     // console.log(data);
 
     res.send(formatData({ data }))
@@ -43,6 +44,8 @@ Router.get('/:id', async (req, res) => {
     let data = await find('yulist', { _id: id });
     res.send(formatData({ data }))
 })
+
+
 
 
 
