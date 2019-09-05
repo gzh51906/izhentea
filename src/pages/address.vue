@@ -1,58 +1,86 @@
 <template>
     <div class="address">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>添加地址</span>
+            <van-nav-bar title="添加地址" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
         <div class="add">
             <van-address-edit
             :area-list="areaList"
+            :show-delete="isShowDeleteBtn"
+            :address-info="addressInfo"
             show-postal
-            show-delete
             show-set-default
-            show-search-result
-            :search-result="searchResult"
             @save="onSave"
-            @delete="onDelete"
-            @change-detail="onChangeDetail"/>
+            @delete="onDelete"/>
         </div>
     </div>
 </template>
 
 <script>
 
-import areaList from "../assets/area"
+import areaList from "../assets/area";
+import { mapMutations } from "vuex";
+
 export default {
+  name: "Address",
+  components: {},
+
   data() {
     return {
+      queryIdx: "",
       areaList,
-      searchResult: []
+      isShowDeleteBtn: false,
+      addressInfo:{},
+    }
+  },
+
+  created() {
+    if (this.$route.query.idx >= 0) {
+      this.queryIdx = this.$route.query.idx;
+      this.addressInfo = this.$store.state.address[this.$route.query.idx];
+      this.isShowDeleteBtn = true;
     }
   },
 
   methods: {
-    onSave() {
-      this.$router.push("/addresslist")
-    },
-    onDelete() {
-      Toast('delete');
-    },
-    onChangeDetail(val) {
-      if (val) {
-        this.searchResult = [{
-          name: '黄龙万科中心',
-          address: '杭州市西湖区'
-        }];
+    onSave(e) {
+      let data = {};
+      data.name = e.name;
+      data.tel = e.tel;
+      data.address = e.province + e.city + e.county + e.addressDetail + "";
+      data.areaCode = e.areaCode;
+      data.isDefault = e.isDefault;
+      data.postalCode = e.postalCode;
+      data.addressDetail = e.addressDetail;
+
+      if (this.queryIdx !== "") {
+        this.editAddress({ data: data, idx: this.queryIdx });
       } else {
-        this.searchResult = [];
+        this.saveAddress(data);
       }
+      
+      this.$router.push({path:"/addresslist"})
+    },
+
+    onDelete(e){
+      this.removeAddress(this.idx);
+      this.$router.push({
+        path: "/addresslist"
+      });
+    },
+
+    ...mapMutations(["saveAddress", "removeAddress", "editAddress"]),
+
+    onClickLeft(){
+      this.$router.go(-1);
     }
+    
   }
 }
 
 </script>
 
-<style scoped>
+<style>
 
 .add{
     position: relative;
