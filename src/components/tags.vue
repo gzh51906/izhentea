@@ -5,7 +5,7 @@
         alt
       />
     </div>
-    <van-grid :column-num="3" class="brandWraper">
+    <van-grid :column-num="3" :border="false" class="brandWraper">
   <van-grid-item
     v-for="value in 9"
     :key="value"

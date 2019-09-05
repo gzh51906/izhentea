@@ -90,10 +90,10 @@
           />
         </van-col>
         <van-col span="12" class="item">
-          <span class="text">安吉白茶 龙王山 2019年新茶 单罐50g</span>
-          <span class="price">￥69</span>
+          <span class="text">正山小种  御仙庄 2017年出凡  红茶50g</span>
+          <span class="price">￥49</span>
           <img
-            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/6/ff20949c-233b-4f69-97ff-e98f85cd08ae.jpg"
+            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/c38009a4-e072-44f4-a6c4-75bbfee5e4d4.jpg"
             alt
           />
         </van-col>
@@ -108,10 +108,10 @@
           />
         </van-col>
         <van-col span="12" class="item">
-          <span class="text">黄山毛峰 雨前茶 徽韵飘香 谢裕大 250g袋装</span>
-          <span class="price">￥68</span>
+          <span class="text">正宗碧螺春 2019绿茶新茶雨前一级碧螺茶100g罐装</span>
+          <span class="price">￥52</span>
           <img
-            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/bc8fd351-574c-4b96-a0f2-7cdbbf24bccb.jpg"
+            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/b12df48f-0828-4b5a-8e00-ad9ff55f889b.jpg"
             alt
           />
         </van-col>
@@ -263,14 +263,14 @@ export default {
   height: 26px;
 }
 .recommend-wrapper {
-  padding: 15px;
   width: 95%;
   margin: auto;
   background: #fff;
 }
 .text {
   display: inline-block;
-  width: 90%;
+  width: 80%;
+  margin-left: 8px;
   text-align: center;
   white-space: nowrap;
   overflow: hidden;
@@ -279,6 +279,7 @@ export default {
   color: #333;
 }
 .price {
+  margin-left: 15px;
   display: inline-block;
   text-align: center;
   width: 45px;
@@ -288,7 +289,9 @@ export default {
   font-size: 0.2rem;
 }
 .item {
+  border: 1px solid #eee;
   position: relative;
+  padding: 7px;
   width: 50%;
   height: 90px;
 }
