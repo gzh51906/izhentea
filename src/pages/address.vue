@@ -37,7 +37,7 @@ export default {
   created() {
     if (this.$route.query.idx >= 0) {
       this.queryIdx = this.$route.query.idx;
-      this.addressInfo = this.$store.state.address[this.$route.query.idx];
+      this.addressInfo = this.$store.state.shopcart.address[this.$route.query.idx];
       this.isShowDeleteBtn = true;
     }
   },
