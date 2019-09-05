@@ -139,20 +139,7 @@
 
     <!--           热门品牌          -->
 
-    <div class="recommend-text border-bottom">
-      <img
-        src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/7b2addc9-14b0-4504-b8bf-d9c1362bc4dc.jpg"
-        alt
-      />
-    </div>
-    <van-grid :column-num="3" class="brandWraper">
-  <van-grid-item
-    v-for="value in 9"
-    :key="value"
-    icon="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/c253ea55-a79e-4f94-b75d-b8174c057f7e.jpg"
-    text="老同志" class="my-icon"
-  />
-</van-grid>
+    <tags></tags>
 
     <!--           猜你喜欢            -->
 
@@ -174,9 +161,11 @@
 <script>
 import bottom from "./bottom.vue";
 import { log } from "util";
+import tags from "../components/tags.vue";
 export default {
   components: {
-    bottom
+    bottom,
+    tags
   },
   data() {
     return {
@@ -362,10 +351,7 @@ export default {
   width: 106px;
   height: 130px;
 }
-.brandWraper {
-  width: 95%;
-  margin: auto;
-}
+
 .img-wrapper img {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;

@@ -1,8 +1,4 @@
 <template>
-<<<<<<< HEAD
-<!-- ff -->
-=======
->>>>>>> 263e8f147a8627927fe9bffeca3bb908927836ba
   <div class="yu-talk">
     <div class="ping-top">
       <span>评论 ({{list.length}})</span>

@@ -25,8 +25,6 @@ Router.get('/goodslist', async (req, res) => {
     res.send(formatData({ data }))
 })
 
-<<<<<<< HEAD
-=======
 //获取评论区信息
 Router.get('/goodstalk', async (req, res) => {
     // console.log("----------------------", req.query)
@@ -38,7 +36,6 @@ Router.get('/goodstalk', async (req, res) => {
     res.send(formatData({ data }))
 })
 
->>>>>>> 263e8f147a8627927fe9bffeca3bb908927836ba
 //根据id获取信息
 Router.get('/:id', async (req, res) => {
     // console.log("--------")
