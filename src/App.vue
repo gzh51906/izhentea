@@ -11,7 +11,8 @@ import Vue from "vue";
 import Vant from "vant";
 import "vant/lib/index.css";
 
-//把底部按钮单独放在另一个文件里
+// 把底部按钮单独放在另一个文件里
+//
 
 Vue.use(Vant);
 
