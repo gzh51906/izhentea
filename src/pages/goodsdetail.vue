@@ -3,14 +3,14 @@
     <!-- 轮播 -->
     <van-swipe @change="onChange" class="lunbo">
       <van-swipe-item>
-        <img :src="data.src" alt />
+        <img :src="list.src" alt />
       </van-swipe-item>
     </van-swipe>
     <!-- 价格 -->
-    <div class="datail-price">¥{{data.price}}</div>
+    <div class="datail-price">¥{{list.price}}</div>
     <!-- 信息 -->
     <div class="datail-info">
-      <p class="datail-title">同德普洱 论剑系列 甲午普洱生茶</p>
+      <p class="datail-title">{{list.content}}</p>
       <p class="detail-text">精选云南勐腊茶区七村八寨头春古树茶倾力拼配制作</p>
       <div class="price-wrap">
         <van-icon name="star" />
@@ -68,20 +68,16 @@ export default {
     };
   },
   async created() {
-    let { id } = this.$route.params;
-    let { data: { data: data } } = await this.$axios.get(
-      "http://localhost:1906/goods/" + this.$route.params.id,
+    let { _id } = this.$route.params;
+    let { data: { data } } = await this.$axios.get(
+      "http://localhost:1906/goods/" + this.$route.params._id,
       {
-        params: {}
+        params: { id: this.$route.params }
       }
     );
-    console.log("data", data);
-    this.data = {
-      src: data.src,
-      price: data.price,
-      content: data.content
-    };
-    console.log("=========", this.data);
+
+    this.list = data[0];
+    console.log("list", this.list);
   },
   mounted() {
     console.log(this.$route);

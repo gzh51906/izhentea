@@ -56,7 +56,7 @@ let router = new VueRouter({
     }, {
         // 当浏览器路径为/goodsdetail时，渲染goodsdetail组件内容
         name: 'goodsdetail',
-        path: '/goodsdetail',
+        path: '/goodsdetail/:_id',
         component: goodsdetail
     },
     {

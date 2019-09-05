@@ -32,8 +32,10 @@ Router.get('/', async (req, res) => {
 
 
 Router.get('/:id', async (req, res) => {
+
     let { id } = req.params;
-    let data = await find('user', { _id: id });
+    let data = await find('goods', { _id: id });
+
     res.send(formatData({ data }))
 })
 
