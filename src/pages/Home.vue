@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="home">
 
     <!--                轮播图                --> 
@@ -139,20 +139,7 @@
 
     <!--           热门品牌          -->
 
-    <div class="recommend-text border-bottom">
-      <img
-        src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/7b2addc9-14b0-4504-b8bf-d9c1362bc4dc.jpg"
-        alt
-      />
-    </div>
-    <van-grid :column-num="3" class="brandWraper">
-  <van-grid-item
-    v-for="value in 9"
-    :key="value"
-    icon="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/c253ea55-a79e-4f94-b75d-b8174c057f7e.jpg"
-    text="老同志" class="my-icon"
-  />
-</van-grid>
+    <tags></tags>
 
     <!--           猜你喜欢            -->
 
@@ -163,10 +150,10 @@
       />
     </van-sticky>
     <div><van-row class="list">
-  <van-col :span="12" class="img-wrapper"  v-for="data in list" :key="data._id"><img :src="data.src" alt=""><div class="tex"><span >{{data.content}}</span></div><div class="pric"><span >{{data.price}}</span></div></van-col>
+  <van-col :span="12" class="img-wrapper"  v-for="data in list" :key="data._id" @click="goto(data._id)"><img :src="data.src" alt=""><div class="tex"><span >{{data.content}}</span></div><div class="pric"><span >{{data.price}}</span></div></van-col>
 </van-row></div>
 </div>
-
+<span class="di">茶有底，道无尽。</span>
     <bottom></bottom>
   </div>
 </template>
@@ -174,15 +161,27 @@
 <script>
 import bottom from "./bottom.vue";
 import { log } from "util";
+import tags from "../components/tags.vue";
 export default {
   components: {
-    bottom
+    bottom,
+    tags
   },
   data() {
     return {
       list: [],
       container: null
     };
+  },
+  methods: {
+    goto(_id) {
+      this.$router.push({
+        name: "goodsdetail",
+        params: {
+          _id
+        }
+      });
+    }
   },
   async created() {
     let data = await this.$axios
@@ -201,8 +200,6 @@ export default {
     console.log(data);
   },
   mounted() {
-    0;
-
     this.container = this.$refs.container;
   }
 };
@@ -354,10 +351,7 @@ export default {
   width: 106px;
   height: 130px;
 }
-.brandWraper {
-  width: 95%;
-  margin: auto;
-}
+
 .img-wrapper img {
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
@@ -366,9 +360,7 @@ export default {
 }
 .list {
   margin: auto;
-  padding: 0 13px 0 13px;
   width: 95%;
-  background: #fff;
 }
 .tex {
   height: 62px;
@@ -378,8 +370,9 @@ export default {
   color: #333;
 }
 .img-wrapper {
+  background: #fff;
   border-top: 1px solid #eee;
-  padding: 5px;
+  padding: 0 13px;
 }
 .img-wrapper:nth-child(2n-1) {
   border-right: 1px solid #eee;
@@ -393,6 +386,15 @@ export default {
 }
 .pric span::before {
   content: "￥";
+}
+.di {
+  display: inline-block;
+  line-height: 90px;
+  color: #999;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 70px;
 }
 </style>
 
