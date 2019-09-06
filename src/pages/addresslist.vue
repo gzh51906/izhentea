@@ -7,6 +7,7 @@
             <van-address-list
              v-model="chosenAddressId"
              :list="list"
+             @select="onselect"
              @add="onAdd"
              @edit="onEdit"/>
         </div>
@@ -25,8 +26,8 @@ export default {
     }
   },
 
-  mounted () {
-    let addressList = this.$store.state.address;
+  mounted () {   
+    let addressList = this.$store.state.shopcart.address;
     addressList.forEach((element,idx) => {
       element.id = idx + "";
       if(element.isDefault){
@@ -37,6 +38,10 @@ export default {
   },
 
   methods: {
+    onselect(path) {
+      this.$router.push({path:"/pay"})
+    },
+
     onAdd(path) {
       this.$router.push({path:"/address"})
     },

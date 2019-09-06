@@ -179,6 +179,7 @@ export default {
       container: null
     };
   },
+  
   methods: {
     goto(_id) {
       this.$router.push({
