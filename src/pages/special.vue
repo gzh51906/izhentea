@@ -5,7 +5,7 @@
             
             <div class="headimg">
         </div>
-        <div class="title">
+        <div class="titl">
             <van-tabs type="card">
   <van-tab title="无忧退">赠送品鉴小样，不满意整饼(罐)包退</van-tab>
   <van-tab title="随心买">可选择小规格（10g，20g）购买</van-tab>
@@ -42,7 +42,7 @@
 </van-grid></div>
 <div class="centerfoot"></div>
         </div>
-        <div class="bottom "><van-row class="bost">
+        <div class="botto "><van-row class="bost">
   <van-col :span="12" class="img-wrappe" v-for="data in list" :key="data._id" @click="goto(data._id)"><img :src="data.src" alt=""><span class="te">{{data.content}}</span><div><span class="pri" >￥ {{data.price}}</span></div></van-col>
 </van-row></div>
     </div>
@@ -103,7 +103,7 @@ export default {
   background-image: url(../img/banner.png);
   background-size: cover;
 }
-.title {
+.titl {
   width: 95%;
   height: 120px;
   padding: 27.5px;
@@ -171,7 +171,7 @@ export default {
   background-image: url(../img/centerfoot.png);
   background-size: cover;
 }
-.bottom {
+.botto {
   width: 100%;
   background: #ffcd93;
   padding: 10px;

@@ -79,9 +79,7 @@ export default {
 
     this.list = data[0];
   },
-  mounted() {
-    console.log(this.$route);
-  },
+  mounted() {},
   methods: {
     onChange(index) {
       this.current = index;
