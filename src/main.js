@@ -3,10 +3,15 @@ import App from './App.vue'
 
 //引入router组件
 import router from './router';
+//引入axios组件
 import axios from 'axios';
 
-//test
+//引入store组件
+import store from './store'
+// console.log(store);
 
+//test
+axios.head()
 Vue.config.productionTip = false
 
 
@@ -16,5 +21,6 @@ Vue.prototype.$axios = axios;
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

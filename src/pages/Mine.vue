@@ -1,10 +1,17 @@
 <template>
   <div class="mine">
     <van-row type="flex" class="header" justify="center">
-      <van-col span="24" class="imgbox" @click="goto('login')">
+      <van-col span="24" class="imgbox" @click="goto('login')" v-if="logined">
         <img src="../assets/下载.png" alt />
         <p class="nothing"></p>
         <span>登录/注册</span>
+      </van-col>
+      <van-col span="24" class="imgbox" v-else>
+        <div @click="logout">
+          <img src="../assets/下载.png" alt />
+          <p class="nothing"></p>
+          <span>蔡徐坤（已登录）</span>
+        </div>
       </van-col>
       <van-col span="24" class="numltemWraper">
         <van-row type="flex" justify="center" class="numltems">
@@ -98,13 +105,31 @@ export default {
       ]
     };
   },
+  computed: {
+    logined() {
+      let datalocal = localStorage.getItem("Authorization");
+      let datastore = this.$store.state.common.authorization;
+
+      if (datalocal) {
+        return !datalocal;
+      } else if (!datastore) {
+        return !datastore;
+      }
+    }
+  },
   methods: {
     goto(path) {
       this.$router.push({ path });
+    },
+    logout() {
+      this.$store.commit("logout");
     }
   },
   components: {
     bot
+  },
+  created() {
+    // console.log(this.$route);
   }
 };
 </script>
