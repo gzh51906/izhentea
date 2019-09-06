@@ -32,7 +32,7 @@ export default {
 
     methods: {
         goadd(path){
-            this.$router.push({path:'addresslist'})
+            this.$router.push({path:'/addresslist'})
         },
 
         onClickLeft(){
