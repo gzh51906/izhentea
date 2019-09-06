@@ -6,12 +6,14 @@ import Chayu from "../pages/Chayu.vue"
 import Shopcart from "../pages/Shopcart.vue"
 import Login from "../pages/Login.vue"
 import livedetail from "../pages/livedetail.vue"
-
+import special from "../pages/special.vue"
 import goodsdetail from "../pages/goodsdetail.vue"
 
 import pay from "../pages/pay.vue"
 import addresslist from "../pages/addresslist.vue"
 import address from "../pages/address.vue"
+import chaping from "../pages/chaping.vue"
+import list from "../pages/list.vue"
 
 
 
@@ -50,15 +52,22 @@ let router = new VueRouter({
         path: '/shopcart',
         component: Shopcart,
         meta: { requiresAuth: true }
-    }, {
-        // 当浏览器路径为/livedetetail时，渲染livedetail组件内容
+    },
+    {
+        // 当浏览器路径为/special时，渲染special组件内容
+        name: 'special',
+        path: '/special',
+        component: special
+    },
+    {
+        // 当浏览器路径为/livedetetail时，渲染Home组件内容
         name: 'livedetail',
-        path: '/livedetail',
+        path: '/livedetail/:id',
         component: livedetail
     }, {
         // 当浏览器路径为/goodsdetail时，渲染goodsdetail组件内容
         name: 'goodsdetail',
-        path: '/goodsdetail',
+        path: '/goodsdetail/:_id',
         component: goodsdetail
     },
     {
@@ -85,6 +94,16 @@ let router = new VueRouter({
         name: 'address',
         path: '/address',
         component: address
+    }, {
+        // 当浏览器路径为/address时，渲染address组件内容
+        name: 'chaping',
+        path: '/chaping',
+        component: chaping
+    }, {
+        // 当浏览器路径为/list时，渲染list组件内容
+        name: 'list',
+        path: '/list',
+        component: list
     }]
 })
 

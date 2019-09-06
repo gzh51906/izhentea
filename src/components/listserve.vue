@@ -18,7 +18,6 @@
     <van-popup v-model="show" position="bottom" :style="{ height: '75%' }">
       <div class="content">
         <p class="title">茶臻选基础保障</p>
-
         <p class="big-tit">无忧退</p>
         <p class="big-info">凡是加入品鉴计划的商品，消费者收到茶叶后，可先冲泡品鉴装。对比茶叶品质后，再决定是否购买。若要退货，快递费由平台承担。</p>
         <p class="big-tit">随心买</p>

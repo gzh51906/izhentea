@@ -221,8 +221,6 @@ body {
   align-items: center;
   height: 48px;
 }
-.sign {
-}
 .sign-item {
   height: 83.89px;
   display: flex;

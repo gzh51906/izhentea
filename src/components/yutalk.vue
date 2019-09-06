@@ -1,7 +1,7 @@
 <template>
   <div class="yu-talk">
     <div class="ping-top">
-      <span>评论 (3)</span>
+      <span>评论 ({{list.length}})</span>
     </div>
     <!-- 填写评论 -->
     <div class="mine-talk">
@@ -11,15 +11,15 @@
       <span>发送</span>
     </div>
     <!-- 评论区 -->
-    <pinglun></pinglun>
+    <pinglun v-for="item in list" :key="item._id" :item="item"></pinglun>
     <!-- 查看评论区 -->
     <div class="chakan">
       <van-button type="primary" @click="showPopup">查看更多评论</van-button>
       <van-popup v-model="show" position="bottom" :style="{ height: '80%' }">
         <div class="ping-top">
-          <span>评论 (3)</span>
+          <span>评论 ({{list.length}})</span>
         </div>
-        <pinglun></pinglun>
+        <pinglun v-for="item in list" :key="item._id" :item="item"></pinglun>
         <div class="mine-talk">
           <img src="../img/li.jpg" alt />
 
@@ -37,7 +37,7 @@ import pinglun from "./yupinglun.vue";
 
 export default {
   data() {
-    return { show: false };
+    return { show: false, list: [] };
   },
   methods: {
     showPopup() {
@@ -46,6 +46,17 @@ export default {
   },
   components: {
     pinglun
+  },
+  async created() {
+    let { data } = await this.$axios.get(
+      "http://localhost:1906/yulist/goodstalk",
+      {}
+    );
+
+    let a = parseInt(Math.random() * 4);
+
+    this.list = data.data.slice(a, a + a);
+    console.log(this.list);
   }
 };
 </script>

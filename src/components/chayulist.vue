@@ -3,20 +3,20 @@
     <van-row>
       <van-col span="22" offset="1">
         <div class="list-left">
-          <p class="list-left-text">茶，让淡雅的日子，氤氲着淡淡鄂香淡淡鄂香</p>
+          <p class="list-left-text">{{item.title}}</p>
           <div class="list-left-bottom">
             <div class="img-left">
-              <img src="../img/cyfx.jpg" alt />
-              <span>茶业复兴</span>
+              <img :src="item.touxiang" alt />
+              <span>{{item.name}}</span>
             </div>
             <div class="img-right">
               <van-icon name="eye-o" />
-              <span>1人看过</span>
+              <span>{{item.num}}</span>
             </div>
           </div>
         </div>
         <div class="list-right">
-          <img src="../img/list.jpg" alt />
+          <img :src="item.bgsrc" alt />
         </div>
       </van-col>
     </van-row>
@@ -24,7 +24,12 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["item"],
+  data() {
+    return {};
+  }
+};
 </script>
 
 <style  scoped>
@@ -55,7 +60,7 @@ export default {};
 }
 .list-left-text {
   font-size: 1rem;
-  line-height: 1rem;
+  line-height: 1.3rem;
 }
 .list-left-bottom {
   display: flex;

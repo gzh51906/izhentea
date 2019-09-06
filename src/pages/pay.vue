@@ -1,12 +1,11 @@
 <template>
     <div class="jiesuan">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>确认信息</span>
+            <van-nav-bar title="确认信息" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
         <div class="shoplist">
             <div class="addressinp"> 
-                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd('addresslist')"/>
+                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd"/>
                 <div class="paybox">
                     <p>支付方式</p>
                     <van-cell title="微信" icon="wechat">
@@ -33,7 +32,11 @@ export default {
 
     methods: {
         goadd(path){
-            this.$router.push({path})
+            this.$router.push({path:'/addresslist'})
+        },
+
+        onClickLeft(){
+            this.$router.push({path:"/Shopcart"});
         }
     }
 }

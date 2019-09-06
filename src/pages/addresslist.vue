@@ -1,16 +1,14 @@
 <template>
     <div class="addresslist">
         <div class="head">
-            <span class="spa"><van-icon name="arrow-left" size="20px"/></span>
-            <span>我的地址</span>
+            <van-nav-bar title="我的地址" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
-        <div>
+        <div class="addressnav">
             <van-address-list
              v-model="chosenAddressId"
              :list="list"
-             :disabled-list="disabledList"
-             disabled-text="以下地址超出配送范围"
-             @add="onAdd('address')"
+             @select="onselect"
+             @add="onAdd"
              @edit="onEdit"/>
         </div>
     </div>
@@ -19,43 +17,52 @@
 <script>
 
 export default {
+  name: "addresslist",
+  components: {},
   data() {
     return {
-      chosenAddressId: '1',
-      list: [
-        {
-          id: '1',
-          name: '张三',
-          tel: '13000000000',
-          address: '浙江省杭州市西湖区文三路 138 号东方通信大厦 7 楼 501 室'
-        },
-        {
-          id: '2',
-          name: '李四',
-          tel: '1310000000',
-          address: '浙江省杭州市拱墅区莫干山路 50 号'
-        }
-      ],
-      disabledList: [
-        {
-          id: '3',
-          name: '王五',
-          tel: '1320000000',
-          address: '浙江省杭州市滨江区江南大道 15 号'
-        }
-      ]
+      chosenAddressId: '0',
+      list: [],
     }
   },
 
+  mounted () {   
+    let addressList = this.$store.state.shopcart.address;
+    addressList.forEach((element,idx) => {
+      element.id = idx + "";
+      if(element.isDefault){
+        this.chosenAddressId = element.id;
+      }
+    });
+    this.list = addressList;
+  },
+
   methods: {
+    onselect(path) {
+      this.$router.push({path:"/pay"})
+    },
+
     onAdd(path) {
-      this.$router.push({path})
+      this.$router.push({path:"/address"})
     },
 
     onEdit(item, index) {
-      Toast('编辑地址:' + index);
+      this.$router.push({path:"/address",query:{idx:index}})
+    },
+
+    onClickLeft(){
+      this.$router.push({path:"/pay"});
     }
   }
 }
 
 </script>
+
+<style>
+
+.addressnav{
+  position: relative;
+  top: 60px;
+}
+
+</style>
