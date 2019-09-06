@@ -6,7 +6,7 @@ import Chayu from "../pages/Chayu.vue"
 import Shopcart from "../pages/Shopcart.vue"
 import Login from "../pages/Login.vue"
 import livedetail from "../pages/livedetail.vue"
-
+import special from "../pages/special.vue"
 import goodsdetail from "../pages/goodsdetail.vue"
 
 import pay from "../pages/pay.vue"
@@ -50,7 +50,14 @@ let router = new VueRouter({
         name: 'shopcart',
         path: '/shopcart',
         component: Shopcart
-    }, {
+    },
+    {
+        // 当浏览器路径为/special时，渲染special组件内容
+        name: 'special',
+        path: '/special',
+        component: special
+    },
+    {
         // 当浏览器路径为/livedetetail时，渲染Home组件内容
         name: 'livedetail',
         path: '/livedetail/:id',
