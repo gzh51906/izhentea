@@ -1,17 +1,18 @@
 <template>
   <div class="loginIcode">
     <div class="header-icon">
-      <van-icon name="arrow-left"></van-icon>
+      <van-icon name="arrow-left" @click="back"></van-icon>
     </div>
     <div class="pwd-input">
       <h2>请输入验证码</h2>
       <p>60秒内短信会到达手机13242854645</p>
       <van-password-input
-        :value="value"
+        v-model="value"
         :length="4"
         :gutter="15"
         :focused="showKeyboard"
         @focus="showKeyboard = true"
+        :mask="show"
       />
     </div>
 
@@ -27,21 +28,54 @@
 </template>
 <script>
 export default {
+  props: ["code", "phone"],
   data() {
     return {
       value: "",
-      showKeyboard: true
+      showKeyboard: true,
+      show: false
     };
   },
 
   methods: {
-    onInput(key) {
+    async onInput(key) {
       this.value = (this.value + key).slice(0, 6);
+
+      // 发起请求校验用户名是否已被注册
+      if (this.value == this.code) {
+        let { data } = await this.$axios
+          .post("http://localhost:1906/user/regcheck", {
+            phone: this.phone
+          })
+          .catch(e => {});
+
+        if (data.code === 1) {
+          let targetUrl = this.$route.query.targetUrl || "/mine";
+
+          // 保存token到本地
+          // localStorage.setItem("Authorization", data.data.authorization);
+          this.$store.commit("login", data.data.authorization);
+
+          this.$router.push(targetUrl).catch(err => {
+            console.log(err);
+          });
+        } else {
+          alert("登录异常");
+        }
+      }
     },
     onDelete() {
       this.value = this.value.slice(0, this.value.length - 1);
+    },
+    back() {
+      this.$router.go(-1);
     }
-  }
+  },
+  created() {
+    console.log(this.code);
+    console.log(this.phone);
+  },
+  mounted() {}
 };
 </script>
 

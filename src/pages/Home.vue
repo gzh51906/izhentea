@@ -1,7 +1,6 @@
  <template>
   <div class="home">
-
-    <!--                轮播图                --> 
+    <!--                轮播图                -->
 
     <van-swipe class="recommend" :autoplay="3000" indicator-color="white">
       <van-swipe-item>
@@ -44,7 +43,7 @@
 
     <!--                 头条                 -->
 
-    <headline></headline>    
+    <headline></headline>
 
     <!--                 宫格                 -->
 
@@ -54,10 +53,7 @@
 
     <wrapper></wrapper>
     <div class="activeWraper">
-      <img
-        src="../img/activity.jpg"
-        alt
-      />
+      <img src="../img/activity.jpg" alt />
     </div>
 
     <!--               新品推荐               -->
@@ -79,7 +75,7 @@
           />
         </van-col>
         <van-col span="12" class="item">
-          <span class="text">正山小种  御仙庄 2017年出凡  红茶50g</span>
+          <span class="text">正山小种 御仙庄 2017年出凡 红茶50g</span>
           <span class="price">￥49</span>
           <img
             src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/c38009a4-e072-44f4-a6c4-75bbfee5e4d4.jpg"
@@ -112,18 +108,34 @@
     <div class="hot-wrapper">
       <h3>热销榜</h3>
       <van-grid :border="false" :column-num="3" :gutter="8" class="hot-content">
-  <van-grid-item class="hot-item">
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/cbe8bc5a-40f7-4375-887b-36d809bc8f8b.jpg" />
-    <div class="hot-desc"><span class="text">老同志普洱茶 散茶 2018年一级料  </span><span  class="pric">￥61</span></div>
-  </van-grid-item>
-  <van-grid-item class="hot-item">
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/e90b6ba5-ff1d-4425-adae-8fc0031c0cfe.jpg" /><div class="hot-desc"><span class="text">雀舌 2019新茶  绿茶 明前特级毛尖茶  嫩芽茶叶</span><span class="pric">￥69</span></div>
-  </van-grid-item>
-  <van-grid-item class="hot-item">
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/33cd0c26-3952-40f2-b941-3b378d4dc964.jpg" />
-    <div class="hot-desc"><span class="text">茶臻选自营  普洱 滇红 玫瑰花 快客杯超值套装</span><span  class="pric">￥138</span></div>
-  </van-grid-item>
-</van-grid>
+        <van-grid-item class="hot-item">
+          <img
+            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/cbe8bc5a-40f7-4375-887b-36d809bc8f8b.jpg"
+          />
+          <div class="hot-desc">
+            <span class="text">老同志普洱茶 散茶 2018年一级料</span>
+            <span class="pric">￥61</span>
+          </div>
+        </van-grid-item>
+        <van-grid-item class="hot-item">
+          <img
+            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/e90b6ba5-ff1d-4425-adae-8fc0031c0cfe.jpg"
+          />
+          <div class="hot-desc">
+            <span class="text">雀舌 2019新茶 绿茶 明前特级毛尖茶 嫩芽茶叶</span>
+            <span class="pric">￥69</span>
+          </div>
+        </van-grid-item>
+        <van-grid-item class="hot-item">
+          <img
+            src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/7/33cd0c26-3952-40f2-b941-3b378d4dc964.jpg"
+          />
+          <div class="hot-desc">
+            <span class="text">茶臻选自营 普洱 滇红 玫瑰花 快客杯超值套装</span>
+            <span class="pric">￥138</span>
+          </div>
+        </van-grid-item>
+      </van-grid>
     </div>
 
     <!--           热门品牌          -->
@@ -131,17 +143,31 @@
     <tags></tags>
 
     <!--           猜你喜欢            -->
-    <div ref="container" ><van-sticky :container="container" class="recommend-text"> 
-      <img type="warning"
-        src="../img/related.png"
-        alt
-      />
-    </van-sticky>
-    <div><van-row class="list">
-  <van-col :span="12" class="img-wrapper"  v-for="data in list" :key="data._id" @click="goto(data._id)"><img :src="data.src" alt=""><div class="tex"><span >{{data.content}}</span></div><div class="pric"><span >{{data.price}}</span></div></van-col>
-</van-row></div>
-</div>
-<span class="di">茶有底，道无尽。</span>
+    <div ref="container">
+      <van-sticky :container="container" class="recommend-text">
+        <img type="warning" src="../img/related.png" alt />
+      </van-sticky>
+      <div>
+        <van-row class="list">
+          <van-col
+            :span="12"
+            class="img-wrapper"
+            v-for="data in list"
+            :key="data._id"
+            @click="goto(data._id)"
+          >
+            <img :src="data.src" alt />
+            <div class="tex">
+              <span>{{data.content}}</span>
+            </div>
+            <div class="pric">
+              <span>{{data.price}}</span>
+            </div>
+          </van-col>
+        </van-row>
+      </div>
+    </div>
+    <span class="di">茶有底，道无尽。</span>
     <bottom></bottom>
   </div>
 </template>

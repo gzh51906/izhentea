@@ -37,19 +37,21 @@ let router = new VueRouter({
         // 当浏览器路径为/home时，渲染Mine组件内容
         name: 'mine',
         path: '/mine',
-        component: Mine
+        component: Mine,
+        meta: { requiresAuth: true }
     },
     {
-        // 当浏览器路径为/home时，渲染Chayu组件内容
+        // 当浏览器路径为/chayu时，渲染Chayu组件内容
         name: 'chayu',
         path: '/chayu',
         component: Chayu
     },
     {
-        // 当浏览器路径为/home时，渲染Shopcart组件内容
+        // 当浏览器路径为/shopcart时，渲染Shopcart组件内容
         name: 'shopcart',
         path: '/shopcart',
-        component: Shopcart
+        component: Shopcart,
+        meta: { requiresAuth: true }
     },
     {
         // 当浏览器路径为/special时，渲染special组件内容
@@ -105,6 +107,30 @@ let router = new VueRouter({
     }]
 })
 
+// 路由拦截
+router.beforeEach(function (to, from, next) {
+    // 判断目标路由是否需要登录权限
+    // if(to.meta.requiresAuth){
+    // console.log(to.meta.requiresAuth, "--------");
 
+    if (to.matched.some(item => item.meta.requiresAuth)) {
+
+        // 判断是否已登录
+        let authorization = localStorage.getItem('Authorization');
+
+        if (authorization) {
+
+            next();
+
+        } else {
+            next({
+                path: '/login',
+                query: { targetUrl: to.fullPath }
+            })
+        }
+    } else {
+        next();
+    }
+
+})
 export default router;
-
