@@ -42,11 +42,13 @@
       </van-swipe-item>
     </van-swipe>
 
+    <!--                 头条                 -->
+
+    <headline></headline>    
+
     <!--                 宫格                 -->
 
-    <van-grid :column-num="4" class="grid">
-      <van-grid-item v-for="value in 8" :key="value" icon="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/6/6224b7e2-18b3-4da1-bb15-b34ed94042d6.jpg" text="绿茶" class="my-icon"/>
-    </van-grid>
+    <chagrid></chagrid>
 
     <!--                三张图片               -->
 
@@ -161,10 +163,14 @@
 <script>
 import bottom from "./bottom.vue";
 import { log } from "util";
+import headline from "../components/headline.vue";
+import chagrid from "../components/chagrid.vue";
 import tags from "../components/tags.vue";
 export default {
   components: {
     bottom,
+    headline,
+    chagrid,
     tags
   },
   data() {
@@ -194,10 +200,7 @@ export default {
         // console.log(data);
         //数据格式化
         this.list = data;
-        console.log(this.list);
       });
-
-    console.log(data);
   },
   mounted() {
     this.container = this.$refs.container;
@@ -212,25 +215,15 @@ export default {
   overflow: auto;
   background: #eee;
 }
+.recommend {
+  height: 180px;
+}
 .recommend img {
   width: 100%;
   height: 180px;
 }
 .grid {
   border: 1px solid #fff;
-}
-.my-icon {
-  position: relative;
-  font-family: "my-icon";
-}
-.my-icon img {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 50px;
-  height: 50px;
-  margin: auto;
 }
 .wrapper {
   background: #eee;
