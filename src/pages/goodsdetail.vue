@@ -28,7 +28,7 @@
     <!-- 评论-->
     <goodstalk></goodstalk>
     <!-- 底部购买按钮 -->
-    <goodsbuy></goodsbuy>
+    <goodsbuy :list="list"></goodsbuy>
     <!-- 商品详情 -->
     <div class="goods-info"></div>
     <div class="src-box">
@@ -81,7 +81,7 @@ export default {
     
   },
   mounted() {
-    console.log(this.$route);
+    
   },
   methods: {
     onChange(index) {

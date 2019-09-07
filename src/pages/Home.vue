@@ -184,6 +184,7 @@ export default {
       });
     }
   },
+  
   async created() {
     let data = await this.$axios
       .get("http://localhost:1906/goods", {
