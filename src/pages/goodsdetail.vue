@@ -28,7 +28,7 @@
     <!-- 评论-->
     <goodstalk></goodstalk>
     <!-- 底部购买按钮 -->
-    <goodsbuy></goodsbuy>
+    <goodsbuy :list="list"></goodsbuy>
     <!-- 商品详情 -->
     <div class="goods-info"></div>
     <div class="src-box">
@@ -77,8 +77,9 @@ export default {
       }
     );
 
-    this.list = data[0];
+    this.list = data[0];  
   },
+  
   mounted() {},
   methods: {
     onChange(index) {

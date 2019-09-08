@@ -1,21 +1,21 @@
 <template>
     <div class="shopcar">
        <div class="head">
-            <van-nav-bar title="购物车" left-text=""/>
+            <van-nav-bar title="购物车" left-text="" left-arrow @click-left="onClickLeft"/>
         </div>
        <ul class="shopbox">
            <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-              <li>
+              <li v-for="item in shop" :key="item.pkid">
                   <div class="radius">
                      <van-checkbox v-model="checked" icon-size="15px" checked-color="red" class="radiusbox"></van-checkbox>
                   </div>
-                  <van-card price="2.00" desc="描述信息" title="商品标题" thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"  class="boxprace"/>
-                  <van-stepper v-model="value" class="fuhao"/>
+                  <van-card :price="item.price"  :title="item.content" :thumb="item.src"  class="boxprace"/>
+                  <van-stepper v-model="item.qty" @change="onChange" class="fuhao"/>
               </li>
               
            </van-list>
        </ul>
-       <van-submit-bar :price="3050" button-text="结算" @submit="onSubmit('pay')" style="bottom:74px">
+       <van-submit-bar :price="totalprice(shop)" button-text="结算" @submit="onSubmit('pay')" style="bottom:74px">
            <van-checkbox v-model="checked"  checked-color="red">全选</van-checkbox>
        </van-submit-bar>
        <bot></bot>
@@ -29,25 +29,45 @@ export default {
     data(){
         return{checked: true,
                list: [],
+               shop: [],
                loading: false,
                finished: false,
-               value: 1
         }
-       
     },
+
     components: {
             bot,
     },
 
+    async created () {
+        let data = await this.$axios.get("http://localhost:1906/cartlist", {
+            
+        }).then(({data: {data}})=>{
+            this.shop = data;
+        })
+        console.log(this.shop);
+        
+    },
+
     methods: {
+        onClickLeft(){
+            this.$router.go(-1);
+        },
+
+        onChange(value){
+            this.$axios.get("http://localhost:1906/cartlist",{
+
+            })
+            console.log(value);
+            
+        },
+        
         onLoad(){
             setTimeout(()=>{
                 for(let i = 0; i < 10; i++){
                     this.list.push(this.list.length + 1);
                 }
-
                 this.loading = false;
-
                 if(this.list.length >= 40){
                     this.finished = true;
                 }
@@ -56,7 +76,15 @@ export default {
 
         onSubmit(path){
             this.$router.push({path})
-        }
+        },
+        
+        totalprice(shop){ 
+            return shop.reduce(function(prev,item){       
+                return prev + item.price*item.qty*100   
+            },0) 
+        },
+
+        
     }
 
 }

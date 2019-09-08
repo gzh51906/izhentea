@@ -2,23 +2,37 @@ const express = require('express');
 
 const Router = express.Router();
 
-const { insert, remove, find } = require('../db/mongo');
+const { insert, remove, find, update } = require('../db/mongo');
 
 const { formatData } = require('../utils');
 
 
 
 // 增：购物车数量
-Router.post('/plus', async (req, res) => {
-    let { username, password, age, gender } = req.body;
-    let data
+Router.post('/', async (req, res) => {
+    let { src,content,price,pkid } = req.body;
+    let { skip, limit, sort } = req.query;
+    let data 
     try {
-        //两个参数（colname/数据库名，data/传入的数据）
-        insert('cartlist', { id });//{username,password,age,gender}
-        res.send(formatData())
+        data = await find('cartlist', {pkid}, { skip, limit, sort }); 
+        if(data.length==0){
+            insert('cartlist', { src,content,price,pkid,qty:1 });
+            res.send(formatData())
+        }else{
+            let idx = (data[0].qty*1+1)+"";           
+            update('cartlist', {pkid: pkid}, {$set:{qty:idx}})
+            res.send(formatData({ code: 0 })) 
+        }
+        // res.send(formatData({ data }))
     } catch (err) {
         res.send(formatData({ code: 0 }))
-    }
+    } 
+})
+
+// 改
+Router.patch('/', async(req, res) => {
+    
+    
 })
 
 // 删
@@ -39,9 +53,10 @@ Router.get('/', async (req, res) => {
     let data = await find('cartlist', {}, { skip, limit, sort });
     res.send(formatData({ data }))
 })
+
 Router.get('/:id', async (req, res) => {
     let { id } = req.params;
-    let data = await find('user', { _id: id });
+    let data = await find('cartlist', { _id: id });
     res.send(formatData({ data }))
 })
 
