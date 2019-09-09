@@ -16,7 +16,7 @@ Router.post('/', async (req, res) => {
     try {
         data = await find('cartlist', {pkid}, { skip, limit, sort }); 
         if(data.length==0){
-            insert('cartlist', { src,content,price,pkid,qty:1 });
+            insert('cartlist', { src,content,price,pkid,qty:1,num: true });
             res.send(formatData())
         }else{
             let idx = (data[0].qty*1+1)+"";           
@@ -31,7 +31,9 @@ Router.post('/', async (req, res) => {
 
 // 改
 Router.patch('/', async(req, res) => {
-    
+    let { qty,pkid,num } = req.body;
+    update('cartlist', {pkid: pkid}, {$set:{qty:qty,num:num}})
+    res.send({qty,pkid,num})
     
 })
 
