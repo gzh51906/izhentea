@@ -43,11 +43,14 @@ export default {
 
       // 发起请求校验用户名是否已被注册
       if (this.value == this.code) {
-        let { data } = await this.$axios
-          .post("http://localhost:1906/user/regcheck", {
+        let { data } = await this.$axios.post(
+          "http://localhost:1906/user/regcheck",
+          {
             phone: this.phone
-          })
-          .catch(e => {});
+          }
+        );
+
+        console.log(data);
 
         if (data.code === 1) {
           let targetUrl = this.$route.query.targetUrl || "/mine";
