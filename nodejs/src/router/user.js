@@ -36,16 +36,12 @@ Router.post('/regcheck', async (req, res) => {
 
         //获取用户信息返回
         datareg = await find('users', { phone });
-        datareg = datareg[0]
-
-        console.log("----++++++");
-        console.log(datareg);
-
+        datareg = datareg[0];
 
         res.send(formatData({
             code: 1,
             data: {
-                _id: datacheck._id,
+                _id: datareg._id,
                 phone: datareg.phone,
                 authorization
             }

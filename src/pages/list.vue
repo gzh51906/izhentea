@@ -78,7 +78,7 @@ export default {
     async sale(a) {
       this.cur = a;
       let { data } = await this.$axios.get(
-        "http://localhost:1906/yulist/goodslist",
+        "http://47.96.238.230:1906/yulist/goodslist",
         { params: { sort: "price" } }
       );
       //   console.log(data.data);
@@ -88,7 +88,7 @@ export default {
     async xiao(a) {
       this.cur = a;
       let { data } = await this.$axios.get(
-        "http://localhost:1906/yulist/goodslist",
+        "http://47.96.238.230:1906/yulist/goodslist",
         { params: { sort: "price", asc: true } }
       );
       //   console.log(data.data);
@@ -101,7 +101,7 @@ export default {
   },
   async created() {
     let { data } = await this.$axios.get(
-      "http://localhost:1906/yulist/goodslist",
+      "http://47.96.238.230:1906/yulist/goodslist",
       {}
     );
     // console.log(data.data);

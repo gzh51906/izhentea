@@ -44,24 +44,22 @@ export default {
       // 发起请求校验用户名是否已被注册
       if (this.value == this.code) {
         let { data } = await this.$axios.post(
-          "http://localhost:1906/user/regcheck",
+          "http://47.96.238.230:1906/user/regcheck",
           {
             phone: this.phone
           }
         );
 
-        console.log(data);
-
-        if (data.code === 1) {
+        if (data.code == 1) {
           let targetUrl = this.$route.query.targetUrl || "/mine";
 
           // 保存token到本地
           // localStorage.setItem("Authorization", data.data.authorization);
           this.$store.commit("login", data.data.authorization);
+          console.log(11111);
 
-          this.$router.push(targetUrl).catch(err => {
-            console.log(err);
-          });
+          this.$router.push(targetUrl).catch(err => {});
+          console.log(222222);
         } else {
           alert("登录异常");
         }
@@ -76,6 +74,7 @@ export default {
   },
   created() {
     console.log(this.code);
+    alert("验证码：" + this.code);
     console.log(this.phone);
   },
   mounted() {}

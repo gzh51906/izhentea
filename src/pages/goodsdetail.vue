@@ -22,7 +22,7 @@
       </div>
     </div>
     <!-- 选择参数 弹出层 -->
-    <argument></argument>
+    <argument :list="list"></argument>
     <!-- 弹出层 商品产地信息 -->
     <production></production>
     <!-- 弹出商家服务承诺 -->
@@ -75,7 +75,7 @@ export default {
     let {
       data: { data }
     } = await this.$axios.get(
-      "http://localhost:1906/goods/" + this.$route.params._id,
+      "http://47.96.238.230:1906/goods/" + this.$route.params._id,
       {
         params: { id: this.$route.params }
       }

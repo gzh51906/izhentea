@@ -15,9 +15,9 @@
     <van-popup v-model="show" position="bottom" :style="{ height: '40%' }">
       <div class="content">
         <div class="pro-title">
-          <img src="../img/lun2.jpg" alt />
+          <img :src="list.src" alt />
           <div class="pro-right">
-            <p class="pro-price">￥418</p>
+            <p class="pro-price">￥{{list.price}}</p>
             <div class="pro-left">
               <span class="pro-check">已选: 400g</span>
 
@@ -45,6 +45,7 @@
 <script>
 import goodsbuy from "./goodsbuy.vue";
 export default {
+  props: ["list"],
   data() {
     return {
       show: false,
@@ -56,6 +57,7 @@ export default {
   methods: {
     showPopup() {
       this.show = true;
+      // console.log(this.list)
     }
   },
   components: {

@@ -65,7 +65,7 @@ export default {
   },
   async created() {
     let { data } = await this.$axios.get(
-      "http://localhost:1906/yulist/check",
+      "http://47.96.238.230:1906/yulist/check",
       {}
     );
     // console.log(data);

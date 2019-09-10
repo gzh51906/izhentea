@@ -1,30 +1,14 @@
 <template>
-<<<<<<< HEAD
   <div class="shopcar">
     <div class="head">
-      <van-nav-bar title="购物车" left-text left-arrow @click-left="onClickLeft" />
-=======
-    <div class="shopcar">
-       <div class="head">
-            <van-nav-bar title="购物车" left-text="" left-arrow @click-left="onClickLeft" right-text="删除" @click-right="onClickRight"/>
-        </div>
-       <ul class="shopbox">
-           <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
-              <li v-for="item in shop" :key="item.pkid">
-                  <div class="radius">
-                     <van-checkbox v-model="item.num" @change="onChecked(item.qty,item.pkid,item.num)" icon-size="15px" checked-color="red" class="radiusbox"></van-checkbox>
-                  </div>
-                  <van-card :price="item.price" :title="item.content" :thumb="item.src" class="boxprace"/>
-                  <van-stepper v-model="item.qty" @change="onChange(item.qty,item.pkid,item.num)" @plus="onChange(item.qty,item.pkid,item.num)" @minus="onChange(item.qty,item.pkid,item.num)" class="fuhao"/>
-              </li>
-              
-           </van-list>
-       </ul>
-       <van-submit-bar :price="totalprice(shop)" button-text="结算" @submit="onSubmit('pay')" style="bottom:74px">
-           <van-checkbox v-model="checked"  checked-color="red" @click="allChecked">全选</van-checkbox>
-       </van-submit-bar>
-       <bot></bot>
->>>>>>> dev
+      <van-nav-bar
+        title="购物车"
+        left-text
+        left-arrow
+        @click-left="onClickLeft"
+        right-text="删除"
+        @click-right="onClickRight"
+      />
     </div>
     <ul class="shopbox">
       <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
@@ -81,7 +65,7 @@ export default {
 
   async created() {
     let data = await this.$axios
-      .get("http://localhost:1906/cartlist", {})
+      .get("http://47.96.238.230:1906/cartlist", {})
       .then(({ data: { data } }) => {
         this.shop = data;
       });
@@ -95,13 +79,11 @@ export default {
 
   methods: {
     onChecked(value, id, num) {
-      this.$axios.patch("http://localhost:1906/cartlist/", {
+      this.$axios.patch("http://47.96.238.230:1906/cartlist/", {
         pkid: id,
         qty: value,
         num: num
       });
-      // console.log(num);
-      console.log(this.shop.every(item => item.num == true), "-------");
 
       if (this.shop.every(item => item.num == true)) {
         this.checked = true;
@@ -114,97 +96,28 @@ export default {
       this.$router.go(-1);
     },
 
+    async onClickRight() {
+      await this.$axios.delete("http://47.96.238.230:1906/cartlist/", {});
+
+      let data = await this.$axios
+        .get("http://47.96.238.230:1906/cartlist", {})
+        .then(({ data: { data } }) => {
+          this.shop = data;
+        });
+    },
+
     onChange(value, id, num) {
-      this.$axios.patch("http://localhost:1906/cartlist/", {
+      this.$axios.patch("http://47.96.238.230:1906/cartlist/", {
         pkid: id,
         qty: value,
         num: num
       });
     },
 
-<<<<<<< HEAD
     onLoad() {
       setTimeout(() => {
         for (let i = 0; i < 10; i++) {
           this.list.push(this.list.length + 1);
-=======
-    methods: {
-        onChecked(value,id,num){
-            this.$axios.patch("http://localhost:1906/cartlist/",{
-                pkid:id,
-                qty:value,
-                num:num
-            })
-            
-            if(this.shop.every(item=>item.num==true)){
-                this.checked=true
-            }else{
-                this.checked=false
-            }
-        },
-
-        onClickLeft(){
-            this.$router.go(-1);
-        },
-
-        async onClickRight(){
-            await this.$axios.delete("http://localhost:1906/cartlist/",{
-                
-            })
-
-            let data = await this.$axios.get("http://localhost:1906/cartlist", {
-            
-        }).then(({data: {data}})=>{
-            this.shop = data;
-        })
-
-
-        },
-
-        onChange(value,id,num){
-            this.$axios.patch("http://localhost:1906/cartlist/",{
-                pkid:id,
-                qty:value,
-                num:num
-            })
-        },
-        
-        onLoad(){
-            setTimeout(()=>{
-                for(let i = 0; i < 10; i++){
-                    this.list.push(this.list.length + 1);
-                }
-                this.loading = false;
-                if(this.list.length >= 40){
-                    this.finished = true;
-                }
-            }, 500)
-        },
-
-        onSubmit(path){
-            this.$router.push({path})
-        },
-        
-        totalprice(shop){ 
-            return shop.reduce(function(prev,item){       
-                return prev + item.price*item.qty*item.num*100   
-            },0) 
-        }, 
-        
-        allChecked(){
-            if(this.checked!=true){
-                for(var i=0;i<this.shop.length;i++){
-                    this.shop[i].num=true
-                }
-
-            }else{
-                for(var i=0;i<this.shop.length;i++){
-                    this.shop[i].num=false;
-                }
-            }
-            
-
->>>>>>> dev
         }
         this.loading = false;
         if (this.list.length >= 40) {
@@ -224,7 +137,6 @@ export default {
     },
 
     allChecked() {
-      // console.log(checked,this.shop);
       if (this.checked != true) {
         for (var i = 0; i < this.shop.length; i++) {
           this.shop[i].num = true;

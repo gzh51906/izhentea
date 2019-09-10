@@ -49,14 +49,14 @@ export default {
   },
   async created() {
     let { data } = await this.$axios.get(
-      "http://localhost:1906/yulist/goodstalk",
+      "http://47.96.238.230:1906/yulist/goodstalk",
       {}
     );
 
     let a = parseInt(Math.random() * 4);
 
     this.list = data.data.slice(a, a + a);
-    console.log(this.list);
+    // console.log(this.list);
   }
 };
 </script>
