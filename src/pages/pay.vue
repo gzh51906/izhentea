@@ -12,10 +12,31 @@
             <van-icon slot="right-icon" name="checked" style="line-height: inherit;" />
           </van-cell>
         </div>
+<<<<<<< HEAD
         <div class="shoptitle">
           <p>商品详情</p>
         </div>
       </div>
+=======
+        <div class="shoplist">
+            <div class="addressinp"> 
+                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd"/>
+                <div class="paybox">
+                    <p>支付方式</p>
+                    <van-cell title="微信" icon="wechat">
+                        <van-icon slot="right-icon" name="checked" style="line-height: inherit;"/>
+                    </van-cell>
+                </div>
+                <div class="shoptitle">
+                    <p>商品详情</p>
+                    <li v-for="item in shop" :key="item.pkid">
+                        <van-card :price="item.price" :title="item.content" :thumb="item.src" :num="item.qty" class="boxpracepay"/>
+                    </li>
+                </div>
+            </div>
+        </div>
+        <van-submit-bar :price="totalprice(shop)" button-text="去支付" @submit="onSubmit"></van-submit-bar>
+>>>>>>> dev
     </div>
     <van-submit-bar :price="0" button-text="去支付" @submit="onSubmit"></van-submit-bar>
   </div>
@@ -23,6 +44,7 @@
 
 <script>
 export default {
+<<<<<<< HEAD
   data() {
     return {
       onSubmit: ""
@@ -36,6 +58,37 @@ export default {
 
     onClickLeft() {
       this.$router.push({ path: "/Shopcart" });
+=======
+    data(){
+        return{
+            onSubmit:"",
+            shop: [],
+        }
+    },
+
+    async created () {
+        let data = await this.$axios.get("http://localhost:1906/cartlist", {
+            
+        }).then(({data: {data}})=>{
+            this.shop = data;
+        })
+    },
+
+    methods: {
+        goadd(path){
+            this.$router.push({path:'/addresslist'})
+        },
+
+        onClickLeft(){
+            this.$router.push({path:"/Shopcart"});
+        },
+
+        totalprice(shop){ 
+            return shop.reduce(function(prev,item){       
+                return prev + item.price*item.qty*item.num*100   
+            },0) 
+        }, 
+>>>>>>> dev
     }
   }
 };
@@ -47,8 +100,15 @@ export default {
   margin: 0;
 }
 
+<<<<<<< HEAD
 body {
   background: #f2f2f2;
+=======
+ul,li{list-style: none;}
+
+body{
+    background: #f2f2f2;
+>>>>>>> dev
 }
 
 .head {
@@ -95,4 +155,22 @@ body {
   margin-top: 20px;
   margin-bottom: 15px;
 }
+<<<<<<< HEAD
+=======
+
+.shoptitle li{
+    position: relative;
+    width: 414px;
+    height: 106px;
+}
+
+.boxpracepay{
+    width: 380px;
+    position: absolute;
+    left: 12px;
+}
+
+
+
+>>>>>>> dev
 </style>
