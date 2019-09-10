@@ -12,8 +12,8 @@
  * 组长：尤晓东，成员：黎文德，黄冰群，李俊升
  * 尤晓东负责app项目的'茶语'组件部分，商品详情页的开发，并完成了茶语部分详情页的跳转及评论区。搭建后台管理项目的开发环境及nodejs环境，完成了后台管理的添加用户，添加商品详情的功能
  * 黎文德负责app项目开发环境及nodejs环境搭建，完成了'我的'组件的开发，完成了登录注册功能，鉴权，token令牌。后台管理系统的路由跳转及每个列表页的删除功能
- * 黄冰群负责app项目的'首页'组件部分。。。（待续）
- * 李俊升负责app项目的'购物车'组件部分。。。（待续）
+ * 黄冰群负责app项目的'首页'组件部分,
+ * 李俊升负责app项目的'购物车'组件部分,购购物车的样式编写，后台数据渲染到前端，主要功能有：加入购物车功能，购物车商品数量加减功能，商品选中状态改变总价功能，结算页面里的地址创建选择修改功能
 
  ## 项目页截图
 
@@ -37,9 +37,9 @@
 ## 项目目录说明
 
 `-- myproject
-    |-- README.md
+    |-- README.md     //文档说明
     |-- babel.config.js
-    |-- nodejs
+    |-- nodejs    //后端接口
     |   |-- package-lock.json
     |   |-- package.json
     |   `-- src
@@ -66,7 +66,7 @@
     |   `-- index.html
     `-- src
         |-- App.vue
-        |-- assets
+        |-- assets   //静态资源
         |   |-- area.js
         |   |-- indexbg.a937a31.png
         |   |-- logo-tea.png
@@ -74,7 +74,7 @@
         |   |-- selfbg.7f3d9ab.png
         |   |-- userbg.8b94fc1.png
         |   `-- \317\302\324\330.png
-        |-- components
+        |-- components    //细节组件
         |   |-- HelloWorld.vue
         |   |-- argument.vue
         |   |-- chagrid.vue
@@ -91,7 +91,7 @@
         |   |-- yugoods.vue
         |   |-- yupinglun.vue
         |   `-- yutalk.vue
-        |-- img
+        |-- img      //图片
         |   |-- activity.jpg
         |   |-- banner.png
         |   |-- center.png
@@ -113,7 +113,7 @@
         |   |-- touxiang.jpg
         |   `-- xiangq.png
         |-- main.js
-        |-- pages
+        |-- pages       //页面组件
         |   |-- Chayu.vue
         |   |-- Home.vue
         |   |-- Login
@@ -131,10 +131,11 @@
         |   |-- pay.vue
         |   `-- special.vue
         |-- rem.js
-        |-- router
+        |-- router   //路由
         |   `-- index.js
-        |-- store
+        |-- store   //vuex模块化
         |   |-- common.js
         |   |-- index.js
         |   `-- shopcart.js
         `-- utils
+
