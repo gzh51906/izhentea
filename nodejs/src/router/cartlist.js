@@ -23,7 +23,7 @@ Router.post('/', async (req, res) => {
             update('cartlist', {pkid: pkid}, {$set:{qty:idx}})
             res.send(formatData({ code: 0 })) 
         }
-        // res.send(formatData({ data }))
+
     } catch (err) {
         res.send(formatData({ code: 0 }))
     } 
@@ -38,12 +38,13 @@ Router.patch('/', async(req, res) => {
 })
 
 // 删
-Router.delete('/:id', (req, res) => {
-    let { id } = req.params;
-    let data
+Router.delete('/', async(req, res) => {
+    let { num } = req.params;
     try {
-        remove('cartlist', { _id: id })
-        res.send(formatData())
+        if(num = true){
+            remove('cartlist', { num: num })
+            res.send(formatData())
+        }
     } catch (err) {
         res.send(formatData({ code: 0 }))
     }

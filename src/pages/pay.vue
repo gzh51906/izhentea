@@ -14,10 +14,13 @@
                 </div>
                 <div class="shoptitle">
                     <p>商品详情</p>
+                    <li v-for="item in shop" :key="item.pkid">
+                        <van-card :price="item.price" :title="item.content" :thumb="item.src" :num="item.qty" class="boxpracepay"/>
+                    </li>
                 </div>
             </div>
         </div>
-        <van-submit-bar :price="0" button-text="去支付" @submit="onSubmit"></van-submit-bar>
+        <van-submit-bar :price="totalprice(shop)" button-text="去支付" @submit="onSubmit"></van-submit-bar>
     </div>
 </template>
 
@@ -26,8 +29,17 @@
 export default {
     data(){
         return{
-            onSubmit:""
+            onSubmit:"",
+            shop: [],
         }
+    },
+
+    async created () {
+        let data = await this.$axios.get("http://localhost:1906/cartlist", {
+            
+        }).then(({data: {data}})=>{
+            this.shop = data;
+        })
     },
 
     methods: {
@@ -37,7 +49,13 @@ export default {
 
         onClickLeft(){
             this.$router.push({path:"/Shopcart"});
-        }
+        },
+
+        totalprice(shop){ 
+            return shop.reduce(function(prev,item){       
+                return prev + item.price*item.qty*item.num*100   
+            },0) 
+        }, 
     }
 }
 
@@ -46,6 +64,8 @@ export default {
 <style>
 
 *{padding: 0; margin: 0;}
+
+ul,li{list-style: none;}
 
 body{
     background: #f2f2f2;
@@ -94,6 +114,18 @@ body{
     font-size: 15px;
     margin-top: 20px;
     margin-bottom: 15px;
+}
+
+.shoptitle li{
+    position: relative;
+    width: 414px;
+    height: 106px;
+}
+
+.boxpracepay{
+    width: 380px;
+    position: absolute;
+    left: 12px;
 }
 
 
