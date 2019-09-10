@@ -1,36 +1,36 @@
 <template>
-    <div class="addresslist">
-        <div class="head">
-            <van-nav-bar title="我的地址" left-text="" left-arrow @click-left="onClickLeft"/>
-        </div>
-        <div class="addressnav">
-            <van-address-list
-             v-model="chosenAddressId"
-             :list="list"
-             @select="onselect"
-             @add="onAdd"
-             @edit="onEdit"/>
-        </div>
+  <div class="addresslist">
+    <div class="head">
+      <van-nav-bar title="我的地址" left-text left-arrow @click-left="onClickLeft" />
     </div>
+    <div class="addressnav">
+      <van-address-list
+        v-model="chosenAddressId"
+        :list="list"
+        @select="onselect"
+        @add="onAdd"
+        @edit="onEdit"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: "addresslist",
   components: {},
   data() {
     return {
-      chosenAddressId: '0',
-      list: [],
-    }
+      chosenAddressId: "0",
+      list: []
+    };
   },
 
-  mounted () {   
+  mounted() {
     let addressList = this.$store.state.shopcart.address;
-    addressList.forEach((element,idx) => {
+    addressList.forEach((element, idx) => {
       element.id = idx + "";
-      if(element.isDefault){
+      if (element.isDefault) {
         this.chosenAddressId = element.id;
       }
     });
@@ -39,30 +39,27 @@ export default {
 
   methods: {
     onselect(path) {
-      this.$router.push({path:"/pay"})
+      this.$router.push({ path: "/pay" });
     },
 
     onAdd(path) {
-      this.$router.push({path:"/address"})
+      this.$router.push({ path: "/address" });
     },
 
     onEdit(item, index) {
-      this.$router.push({path:"/address",query:{idx:index}})
+      this.$router.push({ path: "/address", query: { idx: index } });
     },
 
-    onClickLeft(){
-      this.$router.push({path:"/pay"});
+    onClickLeft() {
+      this.$router.push({ path: "/pay" });
     }
   }
-}
-
+};
 </script>
 
-<style>
-
-.addressnav{
+<style scoped>
+.addressnav {
   position: relative;
   top: 60px;
 }
-
 </style>

@@ -59,16 +59,16 @@ export default {
         document.body.scrollTop;
       if (scrollTop >= 165) {
         // this.cur = 1;
-        this.$refs.top.classList.add("cur");
-        this.$refs.home.classList.add("icon");
-        this.$refs.left.classList.add("icon");
-        this.$refs.span.classList.add("cur-text");
+        // this.$refs.top.classList.add("cur");
+        // this.$refs.home.classList.add("icon");
+        // this.$refs.left.classList.add("icon");
+        // this.$refs.span.classList.add("cur-text");
       } else {
         // this.cur = 0;
-        this.$refs.top.classList.remove("cur");
-        this.$refs.home.classList.remove("icon");
-        this.$refs.left.classList.remove("icon");
-        this.$refs.span.classList.remove("cur-text");
+        // this.$refs.top.classList.remove("cur");
+        // this.$refs.home.classList.remove("icon");
+        // this.$refs.left.classList.remove("icon");
+        // this.$refs.span.classList.remove("cur-text");
       }
       //   console.log(this.cur);
     },
@@ -124,7 +124,7 @@ export default {
   background: transparent;
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 90%;
   z-index: 1;
   padding: 1rem;
 }
@@ -242,7 +242,7 @@ export default {
 }
 /* 商品列表 */
 .goods {
-  padding: 0 1rem;
+  /* padding: 0 1rem; */
   width: 100%;
   display: flex;
   justify-content: space-between;

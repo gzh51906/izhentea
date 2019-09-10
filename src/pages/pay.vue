@@ -1,101 +1,98 @@
 <template>
-    <div class="jiesuan">
-        <div class="head">
-            <van-nav-bar title="确认信息" left-text="" left-arrow @click-left="onClickLeft"/>
-        </div>
-        <div class="shoplist">
-            <div class="addressinp"> 
-                <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd"/>
-                <div class="paybox">
-                    <p>支付方式</p>
-                    <van-cell title="微信" icon="wechat">
-                        <van-icon slot="right-icon" name="checked" style="line-height: inherit;"/>
-                    </van-cell>
-                </div>
-                <div class="shoptitle">
-                    <p>商品详情</p>
-                </div>
-            </div>
-        </div>
-        <van-submit-bar :price="0" button-text="去支付" @submit="onSubmit"></van-submit-bar>
+  <div class="jiesuan">
+    <div class="head">
+      <van-nav-bar title="确认信息" left-text left-arrow @click-left="onClickLeft" />
     </div>
+    <div class="shoplist">
+      <div class="addressinp">
+        <van-cell value="还没有地址信息，请点击后添加地址" icon="location" is-link @click="goadd" />
+        <div class="paybox">
+          <p>支付方式</p>
+          <van-cell title="微信" icon="wechat">
+            <van-icon slot="right-icon" name="checked" style="line-height: inherit;" />
+          </van-cell>
+        </div>
+        <div class="shoptitle">
+          <p>商品详情</p>
+        </div>
+      </div>
+    </div>
+    <van-submit-bar :price="0" button-text="去支付" @submit="onSubmit"></van-submit-bar>
+  </div>
 </template>
 
 <script>
-
 export default {
-    data(){
-        return{
-            onSubmit:""
-        }
+  data() {
+    return {
+      onSubmit: ""
+    };
+  },
+
+  methods: {
+    goadd(path) {
+      this.$router.push({ path: "/addresslist" });
     },
 
-    methods: {
-        goadd(path){
-            this.$router.push({path:'/addresslist'})
-        },
-
-        onClickLeft(){
-            this.$router.push({path:"/Shopcart"});
-        }
+    onClickLeft() {
+      this.$router.push({ path: "/Shopcart" });
     }
-}
-
+  }
+};
 </script>
 
-<style>
-
-*{padding: 0; margin: 0;}
-
-body{
-    background: #f2f2f2;
+<style scoped>
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.head{
-    width: 100%;
-    height: 44px;
-    background: white;
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-    text-align: center;
-    line-height: 44px;
-    z-index: 999;
-    color: #999;
+body {
+  background: #f2f2f2;
 }
 
-.spa{
-    position: absolute;
-    left: 20px;
-    top: 5px;
+.head {
+  width: 100%;
+  height: 44px;
+  background: white;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  line-height: 44px;
+  z-index: 999;
+  color: #999;
 }
 
-.shoplist{
-    width: 100%;
-    height: 642px;
-    /* background: yellow; */
-    position: relative;
-    top: 44px;
-    display: flex;
-    justify-content: center;
-    overflow: auto;
+.spa {
+  position: absolute;
+  left: 20px;
+  top: 5px;
 }
 
-.addressinp{
-    width: 400px;
-    height: 50px;
-    background: white;
-    margin-top: 10px;
+.shoplist {
+  width: 100%;
+  height: 642px;
+  /* background: yellow; */
+  position: relative;
+  top: 44px;
+  display: flex;
+  justify-content: center;
+  overflow: auto;
+}
+
+.addressinp {
+  width: 400px;
+  height: 50px;
+  background: white;
+  margin-top: 10px;
 }
 
 .paybox p,
-.shoptitle p{
-    font-size: 15px;
-    margin-top: 20px;
-    margin-bottom: 15px;
+.shoptitle p {
+  font-size: 15px;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
-
-
-
 </style>

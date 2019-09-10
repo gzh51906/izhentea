@@ -2,10 +2,10 @@
   <div class="other-talk">
     <div class="other-top">
       <div class="user">
-        <img src="../img/touxiang.jpg" alt />
+        <img :src="item.src" alt />
         <div class="name">
-          <span class="name-top">南方嘉木</span>
-          <span class="name-time">一周前</span>
+          <span class="name-top">{{item.username}}</span>
+          <span class="name-time">{{item.time}}</span>
         </div>
       </div>
       <div class="look-right">
@@ -13,11 +13,13 @@
         <span>4</span>
       </div>
     </div>
-    <div class="other-word">论剑口感很不错，可以作为日常口粮茶来喝。平时不太喜欢喝生普，感觉比较烈。但是这款比较柔，不错不错。</div>
+    <div class="other-word">{{item.text}}</div>
   </div>
 </template>
 <script>
-export default {};
+export default {
+  props: ["item"]
+};
 </script>
 
 <style scoped>

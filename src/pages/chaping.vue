@@ -4,7 +4,7 @@
     <div class="top">
       茶评
       <span>
-        <van-icon name="arrow-left" />
+        <van-icon name="arrow-left" @click="goto" />
       </span>
     </div>
     <!-- 客服评论评分-->
@@ -39,6 +39,17 @@ export default {
     let a = parseInt(this.$route.query.a);
 
     this.list = data.data.slice(a, a + 5);
+    console.log(this.$route);
+  },
+  methods: {
+    goto() {
+      this.$router.push({
+        name: "goodsdetail",
+        params: {
+          _id: this.$route.query.a
+        }
+      });
+    }
   }
 };
 </script>

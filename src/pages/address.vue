@@ -1,23 +1,23 @@
 <template>
-    <div class="address">
-        <div class="head">
-            <van-nav-bar title="添加地址" left-text="" left-arrow @click-left="onClickLeft"/>
-        </div>
-        <div class="add">
-            <van-address-edit
-            :area-list="areaList"
-            :show-delete="isShowDeleteBtn"
-            :address-info="addressInfo"
-            show-postal
-            show-set-default
-            @save="onSave"
-            @delete="onDelete"/>
-        </div>
+  <div class="address">
+    <div class="head">
+      <van-nav-bar title="添加地址" left-text left-arrow @click-left="onClickLeft" />
     </div>
+    <div class="add">
+      <van-address-edit
+        :area-list="areaList"
+        :show-delete="isShowDeleteBtn"
+        :address-info="addressInfo"
+        show-postal
+        show-set-default
+        @save="onSave"
+        @delete="onDelete"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
-
 import areaList from "../assets/area";
 import { mapMutations } from "vuex";
 
@@ -30,14 +30,16 @@ export default {
       queryIdx: "",
       areaList,
       isShowDeleteBtn: false,
-      addressInfo:{},
-    }
+      addressInfo: {}
+    };
   },
 
   created() {
     if (this.$route.query.idx >= 0) {
       this.queryIdx = this.$route.query.idx;
-      this.addressInfo = this.$store.state.shopcart.address[this.$route.query.idx];
+      this.addressInfo = this.$store.state.shopcart.address[
+        this.$route.query.idx
+      ];
       this.isShowDeleteBtn = true;
     }
   },
@@ -58,11 +60,11 @@ export default {
       } else {
         this.saveAddress(data);
       }
-      
-      this.$router.push({path:"/addresslist"})
+
+      this.$router.push({ path: "/addresslist" });
     },
 
-    onDelete(e){
+    onDelete(e) {
       this.removeAddress(this.idx);
       this.$router.push({
         path: "/addresslist"
@@ -71,20 +73,16 @@ export default {
 
     ...mapMutations(["saveAddress", "removeAddress", "editAddress"]),
 
-    onClickLeft(){
+    onClickLeft() {
       this.$router.go(-1);
     }
-    
   }
-}
-
+};
 </script>
 
-<style>
-
-.add{
-    position: relative;
-    top: 60px;
+<style scoped>
+.add {
+  position: relative;
+  top: 60px;
 }
-
 </style>

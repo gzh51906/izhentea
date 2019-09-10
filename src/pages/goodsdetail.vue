@@ -1,6 +1,8 @@
 <template>
   <div class="detail">
-    <div class="back-wrap" @click="onClickLeft"><img src="../img/left-greater.png" alt=""></div>
+    <div class="back-wrap">
+      <img src="../img/left-greater.png" alt @click="goto" />
+    </div>
     <!-- 轮播 -->
     <van-swipe @change="onChange" class="lunbo">
       <van-swipe-item>
@@ -70,24 +72,31 @@ export default {
   },
   async created() {
     let { _id } = this.$route.params;
-    let { data: { data } } = await this.$axios.get(
+    let {
+      data: { data }
+    } = await this.$axios.get(
       "http://localhost:1906/goods/" + this.$route.params._id,
       {
         params: { id: this.$route.params }
       }
     );
 
-    this.list = data[0];  
+    this.list = data[0];
   },
-  
+
   mounted() {},
   methods: {
     onChange(index) {
       this.current = index;
     },
 
-    onClickLeft() {
-      this.$router.go(-1);
+    // onClickLeft() {
+    //   this.$router.go(-1);
+    // }
+    goto() {
+      this.$router.push({
+        name: "home"
+      });
     }
   },
   components: {

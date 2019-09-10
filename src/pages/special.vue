@@ -1,51 +1,84 @@
 <template>
-    <div class="special">
-        <div class="back-wrap" @click="onClickLeft"><img src="../img/left-greater.png" alt=""></div>
-        <div class="heade">
-            
-            <div class="headimg">
-        </div>
-        <div class="titl">
-            <van-tabs type="card">
-  <van-tab title="无忧退">赠送品鉴小样，不满意整饼(罐)包退</van-tab>
-  <van-tab title="随心买">可选择小规格（10g，20g）购买</van-tab>
-  <van-tab title="全场包邮">平台所有商品享受包邮服务</van-tab>
-</van-tabs>
-        </div>
-        <div class="centertitle"></div>
-        <div class="centersub "><van-grid :border="false" :column-num="3" class="dong">
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/10a15ba8-0c9e-4ef5-9f3a-ad0170c1f79c.jpg" />
-    <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
-    <span>￥ 128</span>
-  </van-grid-item>
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/782fa65c-003f-4989-a211-e59a5d48a825.jpg" /><p>八角亭 至尊茶王青饼 2006年普洱生茶</p>
-    <span>￥ 260</span>
-  </van-grid-item>
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/7d1503c6-875c-4715-9c39-2409bc62335a.jpg" /><p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
-    <span>￥ 128</span>
-  </van-grid-item>
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/4/ad095cff-fbe5-44df-9f61-4b5e1dfb6130.jpg" /><p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
-    <span>￥ 128</span>
-  </van-grid-item>
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/91f4ba27-5b21-4f47-a130-e57e731febd0.jpg" /><p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
-    <span>￥ 128</span>
-  </van-grid-item>
-  <van-grid-item>
-    <img src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/01f3d266-1b93-4eb2-a89b-28524036e34f.jpg" /><p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
-    <span>￥ 128</span>
-  </van-grid-item>
-</van-grid></div>
-<div class="centerfoot"></div>
-        </div>
-        <div class="botto "><van-row class="bost">
-  <van-col :span="12" class="img-wrappe" v-for="data in list" :key="data._id" @click="goto(data._id)"><img :src="data.src" alt=""><span class="te">{{data.content}}</span><div><span class="pri" >￥ {{data.price}}</span></div></van-col>
-</van-row></div>
+  <div class="special">
+    <div class="back-wrap" @click="onClickLeft">
+      <img src="../img/left-greater.png" alt />
     </div>
+    <div class="heade">
+      <div class="headimg"></div>
+      <div class="titl">
+        <van-tabs type="card">
+          <van-tab title="无忧退">赠送品鉴小样，不满意整饼(罐)包退</van-tab>
+          <van-tab title="随心买">可选择小规格（10g，20g）购买</van-tab>
+          <van-tab title="全场包邮">平台所有商品享受包邮服务</van-tab>
+        </van-tabs>
+      </div>
+      <div class="centertitle"></div>
+      <div class="centersub">
+        <van-grid :border="false" :column-num="3" class="dong">
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/10a15ba8-0c9e-4ef5-9f3a-ad0170c1f79c.jpg"
+            />
+            <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
+            <span>￥ 128</span>
+          </van-grid-item>
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/782fa65c-003f-4989-a211-e59a5d48a825.jpg"
+            />
+            <p>八角亭 至尊茶王青饼 2006年普洱生茶</p>
+            <span>￥ 260</span>
+          </van-grid-item>
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/7d1503c6-875c-4715-9c39-2409bc62335a.jpg"
+            />
+            <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
+            <span>￥ 128</span>
+          </van-grid-item>
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/4/ad095cff-fbe5-44df-9f61-4b5e1dfb6130.jpg"
+            />
+            <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
+            <span>￥ 128</span>
+          </van-grid-item>
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/5/91f4ba27-5b21-4f47-a130-e57e731febd0.jpg"
+            />
+            <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
+            <span>￥ 128</span>
+          </van-grid-item>
+          <van-grid-item>
+            <img
+              src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/3/01f3d266-1b93-4eb2-a89b-28524036e34f.jpg"
+            />
+            <p>同德茶铺 澜沧云巅 2018年普洱生茶</p>
+            <span>￥ 128</span>
+          </van-grid-item>
+        </van-grid>
+      </div>
+      <div class="centerfoot"></div>
+    </div>
+    <div class="botto">
+      <van-row class="bost">
+        <van-col
+          :span="12"
+          class="img-wrappe"
+          v-for="data in list"
+          :key="data._id"
+          @click="goto(data._id)"
+        >
+          <img :src="data.src" alt />
+          <span class="te">{{data.content}}</span>
+          <div>
+            <span class="pri">￥ {{data.price}}</span>
+          </div>
+        </van-col>
+      </van-row>
+    </div>
+  </div>
 </template>
 <script>
 export default {
@@ -82,7 +115,7 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
 .heade {
   width: 100%;
   height: 900px;

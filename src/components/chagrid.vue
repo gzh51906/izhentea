@@ -1,5 +1,5 @@
 <template>
-  <van-grid :column-num="4" :border="false" class="grid">
+  <van-grid :column-num="5" :border="false" class="grid">
     <van-grid-item class="my-ico" @click="goto">
       <van-image
         src="https://osstea.oss-cn-huhehaote.aliyuncs.com/user/2019/8/c9420376-4849-4bae-b802-5e96e60745bd.jpg"
@@ -59,7 +59,10 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
+.van-grid {
+  background: #fff;
+}
 .my-ico {
   text-align: center;
   height: 75px;
@@ -67,8 +70,6 @@ export default {
   font-family: "my-icon";
 }
 .my-ico img {
-  position: absolute;
-  transform: translate(-50%, -73%);
   width: 50px;
   height: 50px;
   margin: auto;
@@ -79,5 +80,12 @@ export default {
   line-height: 16px;
   font-size: 14px;
   color: #333;
+}
+.van-grid-item {
+  margin-left: 1rem;
+}
+.van-grid-item span {
+  position: absolute;
+  bottom: -0.1rem;
 }
 </style>
